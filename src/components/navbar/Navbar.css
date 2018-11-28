@@ -1,0 +1,28 @@
+#dropdown {
+  border: 1px orange solid;
+  text-decoration: none;
+  color: black;
+  width: 40%
+}
+
+/* #dropdown:hover {
+  display: block;
+  width: 40%
+} */
+
+.navbar {
+  border: 1px red solid;
+  width: 40%;
+}
+
+.navlink {
+  border: 1px black solid;
+  text-decoration: none;
+  color: black;
+}
+
+.navoption {
+  border: 1px green solid;
+  list-style-type: none;
+  /* display: none; */
+}

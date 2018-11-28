@@ -1,8 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { getBudgets } from '../../actions/budget'
 
 class BudgetMain extends Component {
 
+  componentDidMount() {
+    this.props.getBudgets()
+  }
+
+  mapBudgets = () => {
+    // console.log(this.props);
+    return this.props.budgets.map((budget) => {
+      // console.log(budget);
+      return (
+        <div key={budget.id}>
+          <div> {budget.description} </div>
+          <div> {budget.start_date} - {budget.end_date} </div>
+          <div> ${budget.amount} </div>
+          <div> ⇒ </div>
+        </div>
+      )
+    })
+  }
+
   render() {
+    // console.log(this.props);
     return (
       <div>
 
@@ -13,12 +35,7 @@ class BudgetMain extends Component {
         </div>
 
         <div>
-          <div>
-            <div> Budget Description </div>
-            <div> Budget Date Range </div>
-            <div> Budget Amount </div>
-            <button> ⇒ </button>
-          </div>
+          {this.mapBudgets()}
         </div>
 
       </div>
@@ -26,4 +43,16 @@ class BudgetMain extends Component {
   }
 }
 
-export default BudgetMain;
+const mapStateToProps = state => {
+  return {
+    budgets: state.budgetReducer.budgets
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getBudgets: () => getBudgets(dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetMain)

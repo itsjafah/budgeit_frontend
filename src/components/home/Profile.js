@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
+import { userProfile } from '../../actions/home'
+import { connect } from 'react-redux'
 
 class Profile extends Component {
 
+  state = {
+    first_name: '',
+    last_name: '',
+    email: '',
+    password: ''
+  }
+
+  componentDidMount(){
+    this.props.userProfile()
+  }
+
   render() {
+    // console.log(this.props);
     return (
       <div>
 
         <div>
-          <img src='' alt=''></img>
+          <img src='https://www.w3schools.com/howto/img_avatar.png' alt=''></img>
           <div></div>
-            <div> First Name: </div>
-            <div> Last Name: </div>
-            <div> Email: </div>
+            <div> First Name: {this.props.user.first_name}</div>
+            <div> Last Name: {this.props.user.last_name}</div>
+            <div> Email: {this.props.user.email}</div>
             <div> Password: </div>
           <div></div>
           <button> Edit </button>
@@ -33,4 +47,17 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  // console.log(state);
+  return {
+    user: state.userReducer.user
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    userProfile: user => userProfile(user, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

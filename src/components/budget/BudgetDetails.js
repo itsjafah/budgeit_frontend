@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 class BudgetDetails extends Component {
 
@@ -32,4 +33,16 @@ class BudgetDetails extends Component {
   }
 }
 
-export default BudgetDetails;
+const mapStateToProps = state => {
+  return {
+    budget: state.budgetReducer.budget
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    budget: budget => budget(budget, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetDetails)

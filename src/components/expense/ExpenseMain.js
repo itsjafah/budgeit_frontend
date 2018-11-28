@@ -1,8 +1,41 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { getExpenses, deleteExpense } from '../../actions/expense'
 
 class ExpenseMain extends Component {
 
+  componentDidMount() {
+    this.props.getExpenses()
+  }
+
+  handleClickDeleteExpense = (expense) => {
+    // console.log(expense);
+    this.props.deleteExpense(expense)
+      .then(()=>this.props.getExpenses())
+  }
+
+  mapExpenses = () => {
+    if (this.props.expenses.length > 0) {
+      return this.props.expenses.map((expense) => {
+        // console.log(expense)
+          return (
+            <tr key={expense.id}>
+              <td> Category Color </td>
+              <td>{expense.description}</td>
+              <td>{expense.date}</td>
+              <td>${expense.amount} </td>
+              <td>
+                <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
+                <button id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
+              </td>
+            </tr>
+          )
+      })
+    }
+  }
+
   render() {
+    // console.log(this.props);
     return (
       <div>
 
@@ -14,30 +47,17 @@ class ExpenseMain extends Component {
         </div>
 
         <div>
-
           <table>
             <tbody>
+
               <tr>
-                <th> Budget Title <button> Sort </button></th>
+                <th> Category <button> Sort </button></th>
                 <th> Expense Dates <button> Sort </button></th>
                 <th> Expense Amount <button> Sort </button></th>
                 <th> Remaining <button> Sort </button></th>
               </tr>
 
-              <tr>
-                <th> Category Color </th>
-              </tr>
-
-              <tr>
-                <td></td>
-                <td> Expense Description </td>
-                <td> Expense Date </td>
-                <td> Expense Amount </td>
-                <td>
-                  <button> Edit </button>
-                  <button> Delete </button>
-                </td>
-              </tr>
+              {this.mapExpenses()}
 
               <tr>
                 <td></td>
@@ -45,9 +65,9 @@ class ExpenseMain extends Component {
                 <td></td>
                 <td> Remaining </td>
               </tr>
+
             </tbody>
           </table>
-
         </div>
 
       </div>
@@ -55,4 +75,18 @@ class ExpenseMain extends Component {
   }
 }
 
-export default ExpenseMain;
+const mapStateToProps = state => {
+  return {
+    expenses: state.expenseReducer.expenses,
+    expense: state.expenseReducer.expense
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getExpenses: () => getExpenses(dispatch),
+    deleteExpense: (expense) => deleteExpense(expense,dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseMain)
