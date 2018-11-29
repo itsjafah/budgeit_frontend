@@ -7,7 +7,7 @@ import {
 } from '../constants/action-type'
 
 export const getCategories = (dispatch) => {
-  fetch('http://localhost:3000/categories')
+ fetch('http://localhost:3000/categories')
     .then(response => response.json())
     .then(data => {
       // console.log(data)
@@ -22,7 +22,7 @@ export const getCategory = (category, dispatch) => {
 }
 
 export const addCategory = (category, dispatch) => {
-  fetch('http://localhost:3000/categories', {
+  return fetch('http://localhost:3000/categories', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -34,6 +34,7 @@ export const addCategory = (category, dispatch) => {
     .then(data => {
       // console.log(data);
       dispatch({ type: ADD_CATEGORY, payload: data })
+      return data
     })
 }
 
@@ -44,7 +45,13 @@ export const editCategory = (category, dispatch) => {
 }
 
 export const deleteCategory = (category, dispatch) => {
-  fetch(`http://localhost:3000/categories/${category.id}`, {
+  // console.log(category);
+  return fetch(`http://localhost:3000/categories/${category.id}`, {
     method: 'DELETE'
   })
+    .then(response => response.json())
+    .then(data => {
+      dispatch({ type: DELETE_CATEGORY, payload: data })
+      return data
+    })
 }

@@ -2,11 +2,9 @@ import { GET_CATEGORIES, GET_CATEGORY, ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEG
 
 const initialState = {
   categories: [],
-  category: {
     id: '',
     title: '',
     color: ''
-  }
 };
 
 const categoryReducer = (state = initialState, action) => {

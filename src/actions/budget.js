@@ -22,7 +22,7 @@ export const getBudget = (budget, dispatch) => {
 }
 
 export const addBudget = (budget, dispatch) => {
-  fetch('http://localhost:3000/budgets', {
+  return fetch('http://localhost:3000/budgets', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -34,18 +34,36 @@ export const addBudget = (budget, dispatch) => {
     .then(data => {
       // console.log(data);
       dispatch({ type: ADD_BUDGET, payload: data })
+      return data
   })
 }
 
 export const editBudget = (budget, dispatch) => {
-  fetch()
-
-  // dispatch({ type: EDIT_BUDGET, payload: data })
+  // console.log(budget.id);
+  return fetch(`http://localhost:3000/budgets/${budget.id}`, {
+    method: 'PATCH',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(budget)
+  })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data)
+      dispatch({ type: EDIT_BUDGET, payload: data })
+      return data
+    })
 }
 
 export const deleteBudget = (budget, dispatch) => {
   // console.log(budget);
-  fetch(`http://localhost:3000/budgets/${budget.id}`, {
+  return fetch(`http://localhost:3000/budgets/${budget.id}`, {
     method: 'DELETE'
   })
+    .then(response => response.json())
+    .then(data => {
+      dispatch({ type: DELETE_BUDGET, payload: data })
+      return data
+    })
 }

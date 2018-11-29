@@ -11,7 +11,7 @@ class ExpenseMain extends Component {
   handleClickDeleteExpense = (expense) => {
     // console.log(expense);
     this.props.deleteExpense(expense)
-      .then(()=>this.props.getExpenses())
+    .then(()=>this.props.getExpenses())
   }
 
   mapExpenses = () => {
@@ -21,8 +21,8 @@ class ExpenseMain extends Component {
           return (
             <tr key={expense.id}>
               <td> Category Color </td>
-              <td>{expense.description}</td>
               <td>{expense.date}</td>
+              <td>${expense.amount}</td>
               <td>${expense.amount} </td>
               <td>
                 <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
@@ -49,6 +49,10 @@ class ExpenseMain extends Component {
         <div>
           <table>
             <tbody>
+
+              <tr>
+                <th> Budget </th>
+              </tr>
 
               <tr>
                 <th> Category <button> Sort </button></th>

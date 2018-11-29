@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CategoryMain from './CategoryMain'
-import CategoryEdit from './CategoryEdit'
+import CategoryAdd from './CategoryAdd'
 import { connect } from 'react-redux'
 
 class Category extends Component {
@@ -25,7 +25,7 @@ class Category extends Component {
     return (
       <div>
         <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
-        <CategoryEdit />
+        <CategoryAdd />
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addCategory, editCategory } from '../../actions/category'
-import './CategoryEdit.css'
+import { addCategory, editCategory, getCategories } from '../../actions/category'
+import './CategoryAdd.css'
 
-class CategoryEdit extends Component {
+class CategoryAdd extends Component {
   state = {
     title: '',
     color: ''
@@ -31,6 +31,7 @@ class CategoryEdit extends Component {
       let category = { ...this.props.category, ...this.state}
       // console.log(category);
       this.props.addCategory(category)
+      .then(()=>this.props.getCategories())
       event.target.reset()
     } else {
       alert('Please add a title and select a color.')
@@ -38,7 +39,7 @@ class CategoryEdit extends Component {
   }
 
   render() {
-    // console.log(this.props.selectedCategory);
+    // console.log(this.props);
     return (
       <div>
         <form onSubmit={this.handleSubmitCategory}>
@@ -69,15 +70,17 @@ class CategoryEdit extends Component {
 const mapStateToProps = state => {
   // console.log(state.categoryReducer)
   return {
+    categories: state.categoryReducer.categories,
     category: state.categoryReducer.category
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    getCategories: () => getCategories(dispatch),
     addCategory: category => addCategory(category, dispatch),
     editCategory: category => editCategory(category, dispatch)
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryEdit)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryAdd)

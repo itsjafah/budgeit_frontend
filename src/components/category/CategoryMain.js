@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getCategories } from '../../actions/category'
+import { getCategories, deleteCategory } from '../../actions/category'
 
 class CategoryMain extends Component {
 
   componentDidMount() {
     this.props.getCategories()
+  }
+
+  handleClickDeleteCategory = (category) => {
+    // console.log(category.id);
+    this.props.deleteCategory(category)
+    .then(()=>this.props.getCategories())
   }
 
   mapCategories = () => {
@@ -16,7 +22,7 @@ class CategoryMain extends Component {
         <div key={category.id}>
           <div> </div>
           <div> {category.title} </div>
-          <button> Delete </button>
+          <button onClick={()=>this.handleClickDeleteCategory(category)}> Delete </button>
         </div>
       )
     })
@@ -42,13 +48,15 @@ class CategoryMain extends Component {
 
 const mapStateToProps = state => {
   return {
-    categories: state.categoryReducer.categories
+    categories: state.categoryReducer.categories,
+    category: state.categoryReducer.category
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategories: () => getCategories(dispatch)
+    getCategories: () => getCategories(dispatch),
+    deleteCategory: (category) => deleteCategory(category,dispatch)
   }
 }
 

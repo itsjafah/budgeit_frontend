@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getBudgets } from '../../actions/budget'
+import { getBudgets, deleteBudget } from '../../actions/budget'
 
 class BudgetMain extends Component {
 
   componentDidMount() {
     this.props.getBudgets()
+  }
+
+  handleClickDeleteBudget = (budget) => {
+    this.props.deleteBudget(budget)
+    .then(()=>this.props.getBudgets())
   }
 
   mapBudgets = () => {
@@ -17,7 +22,8 @@ class BudgetMain extends Component {
           <div> {budget.description} </div>
           <div> {budget.start_date} - {budget.end_date} </div>
           <div> ${budget.amount} </div>
-          <div> ⇒ </div>
+          <button onClick={()=>this.props.handleClickEditBudget(budget)}> Edit </button>
+          <button onClick={()=>this.handleClickDeleteBudget(budget)}> Delete </button>
         </div>
       )
     })
@@ -51,7 +57,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBudgets: () => getBudgets(dispatch)
+    getBudgets: () => getBudgets(dispatch),
+    deleteBudget: (budget) => deleteBudget(budget, dispatch)
   }
 }
 

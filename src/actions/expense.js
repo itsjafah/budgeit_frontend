@@ -35,7 +35,7 @@ export const addExpense = (expense, dispatch) => {
       // console.log(data)
       dispatch({ type: ADD_EXPENSE, payload: data })
       return data
-    })
+  })
 }
 
 export const editExpense = (expense, dispatch) => {
