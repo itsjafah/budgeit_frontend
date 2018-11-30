@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addCategory, editCategory, getCategories } from '../../actions/category'
+import { addCategory, getCategories } from '../../actions/category'
 import './CategoryAdd.css'
 
 class CategoryAdd extends Component {
@@ -22,11 +22,6 @@ class CategoryAdd extends Component {
   handleSubmitCategory = (event) => {
     // console.log(this.props.category);
     event.preventDefault()
-
-    if (this.props.selectedCategory) {
-
-    }
-
     if (this.state.title && this.state.color) {
       let category = { ...this.props.category, ...this.state}
       // console.log(category);
@@ -36,6 +31,10 @@ class CategoryAdd extends Component {
     } else {
       alert('Please add a title and select a color.')
     }
+    this.setState({
+      title: '',
+      color: ''
+    })
   }
 
   render() {
@@ -78,8 +77,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getCategories: () => getCategories(dispatch),
-    addCategory: category => addCategory(category, dispatch),
-    editCategory: category => editCategory(category, dispatch)
+    addCategory: category => addCategory(category, dispatch)
   }
 }
 

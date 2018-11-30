@@ -8,11 +8,11 @@ import WeekMonth from './weekmonth/WeekMonth'
 import Year from './year/Year'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  withRouter
 } from 'react-router-dom'
 
 class BudgeIt extends Component {
-
   render() {
     return (
       <Router>

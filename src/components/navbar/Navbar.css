@@ -1,51 +1,77 @@
 #top {
-  border: 1px black solid;
-  height: 60px;
+  /* border: 1px black solid; */
+  height: 110px;
   display: flex;
+  background-color: #469cd9;
 }
 
-#dropdown {
-  /* border: 1px black solid; */
-  text-decoration: none;
-  color: black;
-  float: left;
-  height: 100%;
-  width: 33.333%;
-  font-size: 20px;
+#logo-image{
+  height: 40px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
 }
 
 #name {
   /* border: 1px black solid; */
   float: left;
   height: 100%;
-  width: 33.333%;
-  text-align: center;
-  font-size: 30px;
-
+  width: 50%;
+  text-align: left;
+  font-size: 50px;
+  color: white;
 }
 
 #date {
   /* border: 1px black solid; */
   float: right;
   height: 100%;
-  width: 33.333%;
+  width: 50%;
   text-align: right;
-  font-size: 15px;
+  font-size: 20px;
+  color: white;
+  padding-top: 5px;
+  padding-right: 5px;
+}
 
+#navbar {
+  /* border: 1px black solid; */
+  width: 100%;
+  display: inline-block;
+  height: 50px;
+  background: #142946;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px
 }
 
 .navbar {
-  border: 1px black solid;
-  width: 40%;
-}
-
-.navlink {
-  border: 1px black solid;
-  text-decoration: none;
-  color: black;
+  /* border: 1px black solid; */
+  width: 100%;
+  display: flex;
+  height: 50px;
+  background: #142946;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px
 }
 
 .navoption {
-  border: 1px black solid;
-  list-style-type: none;
+  /* border: 1px black solid; */
+  display: inline-block;
+  height: 100%;
+  width: 16.66%;
+  text-align: center;
+}
+
+.navlink {
+  /* border: 1px black solid; */
+  text-decoration: none;
+  color: white;
+  height: 100%;
+  font-size: 20px;
+}
+
+.navlink:hover{
+  color: green
 }

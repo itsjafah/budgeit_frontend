@@ -1,34 +1,42 @@
 import { GET_BUDGETS, GET_BUDGET, ADD_BUDGET, EDIT_BUDGET, DELETE_BUDGET } from "../constants/action-type";
 
 const initialState = {
-  budgets: [],
-  id: '',
-  description: '',
-  amount: '',
-  start_date: '',
-  end_date: '',
-  user_id: ''
+  budgets: []
 };
 
 const budgetReducer = (state = initialState, action) => {
   let budgets
-  let budget
   switch (action.type) {
+
     case GET_BUDGETS:
       budgets = action.payload
       return { ...state, budgets }
+
     case GET_BUDGET:
-      budget = action.payload
-      return { ...state, budget }
+      budgets = [...state.budgets, action.payload]
+      return { ...state, budgets }
+
     case ADD_BUDGET:
-      budget = action.payload
-      return { ...state, budget }
+      budgets = [...state.budgets, action.payload]
+      return { ...state, budgets }
+
     case EDIT_BUDGET:
-      budget = action.payload
-      return { ...state, budget }
+      budgets = [...state.budgets].map(budget => {
+        if (budget.id === action.payload.id ) {
+          return action.payload
+        } else {
+          return budget
+        }
+      })
+      return { ...state, budgets }
+
     case DELETE_BUDGET:
-      budget = action.payload
-      return { ...state, budget }
+      budgets = [...state.budgets].filter(budget => {
+        if (budget.id !== action.payload.id ) {
+          return budget
+        }
+      })
+      return { ...state, budgets }
     default:
       return state;
   }

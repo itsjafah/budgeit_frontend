@@ -17,7 +17,6 @@ class Category extends Component {
       title: category.title,
       color: category.color
     })
-
   }
 
   render() {

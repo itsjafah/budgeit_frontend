@@ -1,8 +1,8 @@
 import {
   GET_CATEGORIES,
-  GET_CATEGORY,
+  // GET_CATEGORY,
   ADD_CATEGORY,
-  EDIT_CATEGORY,
+  // EDIT_CATEGORY,
   DELETE_CATEGORY,
 } from '../constants/action-type'
 
@@ -33,6 +33,7 @@ export const addCategory = (category, dispatch) => {
     .then(response => response.json())
     .then(data => {
       // console.log(data);
+      // debugger
       dispatch({ type: ADD_CATEGORY, payload: data })
       return data
     })
@@ -46,12 +47,8 @@ export const editCategory = (category, dispatch) => {
 
 export const deleteCategory = (category, dispatch) => {
   // console.log(category);
-  return fetch(`http://localhost:3000/categories/${category.id}`, {
+  fetch(`http://localhost:3000/categories/${category.id}`, {
     method: 'DELETE'
   })
-    .then(response => response.json())
-    .then(data => {
-      dispatch({ type: DELETE_CATEGORY, payload: data })
-      return data
-    })
+  dispatch({ type: DELETE_CATEGORY, payload: category })
 }

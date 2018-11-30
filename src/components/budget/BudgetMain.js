@@ -3,6 +3,11 @@ import { connect } from 'react-redux'
 import { getBudgets, deleteBudget } from '../../actions/budget'
 
 class BudgetMain extends Component {
+  state = {
+    budgets: [],
+    sort: false,
+    search: ''
+  }
 
   componentDidMount() {
     this.props.getBudgets()
@@ -10,13 +15,58 @@ class BudgetMain extends Component {
 
   handleClickDeleteBudget = (budget) => {
     this.props.deleteBudget(budget)
-    .then(()=>this.props.getBudgets())
+  }
+
+  handleClickBudgetSort = () => {
+    if (this.state.sort === false) {
+      this.sortAToZ()
+      this.setState({budgets: this.props.budgets, sort: true})
+    } else if (this.state.sort === true) {
+      this.sortZtoA()
+      this.setState({budgets: this.props.budgets, sort: false})
+    }
+  }
+
+  sortAToZ = () => {
+    this.props.budgets.sort(function(a,b) {
+      let nameA = a.description.toLowerCase()
+      let nameB = b.description.toLowerCase()
+      if (nameA < nameB){
+        return -1
+      }
+      if (nameA > nameB){
+        return 1
+      }
+      return 0
+    })
+  }
+
+  sortZtoA = () => {
+    this.props.budgets.sort(function(a,b) {
+      let nameA = a.description.toLowerCase()
+      let nameB = b.description.toLowerCase()
+      if (nameA > nameB){
+        return -1
+      }
+      if (nameA < nameB){
+        return 1
+      }
+      return 0
+    })
+  }
+
+  handleChangeBudgetSearch = (event) => {
+    this.setState({search: event.target.value})
+  }
+
+  searchedBudgetTerm = () => {
+    return this.props.budgets.filter((budget) => {
+      return budget.description.toLowerCase().includes(this.state.search.toLowerCase())
+    })
   }
 
   mapBudgets = () => {
-    // console.log(this.props);
-    return this.props.budgets.map((budget) => {
-      // console.log(budget);
+    return this.searchedBudgetTerm().map((budget) => {
       return (
         <div key={budget.id}>
           <div> {budget.description} </div>
@@ -30,14 +80,15 @@ class BudgetMain extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    // console.log(this.props.budgets);
+    // console.log(this.state.budgets);
     return (
       <div>
 
         <div>
-          <button> Sort </button>
+          <button onClick={this.handleClickBudgetSort}> Sort </button>
           <button> Add </button>
-          <input type="text" placeholder="Search"></input>
+          <input type="text" placeholder="Search" onChange={this.handleChangeBudgetSearch}></input>
         </div>
 
         <div>
@@ -51,7 +102,8 @@ class BudgetMain extends Component {
 
 const mapStateToProps = state => {
   return {
-    budgets: state.budgetReducer.budgets
+    budgets: state.budgetReducer.budgets,
+    budget: state.budgetReducer.budget
   }
 }
 

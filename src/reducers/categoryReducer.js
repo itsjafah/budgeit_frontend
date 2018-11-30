@@ -1,31 +1,42 @@
 import { GET_CATEGORIES, GET_CATEGORY, ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY } from "../constants/action-type";
 
 const initialState = {
-  categories: [],
-    id: '',
-    title: '',
-    color: ''
+  categories: []
 };
 
 const categoryReducer = (state = initialState, action) => {
   let categories
-  let category
   switch (action.type) {
+
     case GET_CATEGORIES:
       categories = action.payload
       return { ...state, categories }
+
     case GET_CATEGORY:
-      category = action.payload
-      return { ...state, category }
+      categories = [...state.categories, action.payload]
+      return { ...state, categories }
+
     case ADD_CATEGORY:
-      category = action.payload
-      return { ...state, category }
+      categories = [...state.categories, action.payload]
+      return { ...state, categories }
+
     case EDIT_CATEGORY:
-      category = action.payload
-      return { ...state, category }
+      categories = [...state.categories].map(category => {
+        if (category.id === action.payload.id ) {
+          return action.payload
+        } else {
+          return category
+        }
+      })
+      return { ...state, categories }
+
     case DELETE_CATEGORY:
-      category = action.payload
-      return { ...state, category }
+      categories = [...state.categories].filter(category => {
+        if (category.id !== action.payload.id ) {
+          return category
+        }
+      })
+      return { ...state, categories }
     default:
       return state;
   }

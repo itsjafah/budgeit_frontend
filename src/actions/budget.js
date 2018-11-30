@@ -1,6 +1,6 @@
 import {
   GET_BUDGETS,
-  GET_BUDGET,
+  // GET_BUDGET,
   ADD_BUDGET,
   EDIT_BUDGET,
   DELETE_BUDGET,
@@ -58,12 +58,8 @@ export const editBudget = (budget, dispatch) => {
 
 export const deleteBudget = (budget, dispatch) => {
   // console.log(budget);
-  return fetch(`http://localhost:3000/budgets/${budget.id}`, {
+  fetch(`http://localhost:3000/budgets/${budget.id}`, {
     method: 'DELETE'
   })
-    .then(response => response.json())
-    .then(data => {
-      dispatch({ type: DELETE_BUDGET, payload: data })
-      return data
-    })
+  dispatch({ type: DELETE_BUDGET, payload: budget })
 }

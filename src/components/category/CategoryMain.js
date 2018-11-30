@@ -3,21 +3,71 @@ import { connect } from 'react-redux'
 import { getCategories, deleteCategory } from '../../actions/category'
 
 class CategoryMain extends Component {
+  state = {
+    categories: [],
+    sort: false,
+    search: ''
+  }
 
   componentDidMount() {
     this.props.getCategories()
   }
 
   handleClickDeleteCategory = (category) => {
-    // console.log(category.id);
     this.props.deleteCategory(category)
-    .then(()=>this.props.getCategories())
+  }
+
+  handleClickCategorySort = () => {
+    if (this.state.sort === false) {
+      this.sortAToZ()
+      this.setState({categories: this.props.categories, sort: true})
+    } else if (this.state.sort === true) {
+      this.sortZtoA()
+      this.setState({categories: this.props.categories, sort: false})
+    }
+  }
+
+  sortAToZ = () => {
+    this.props.categories.sort(function(a,b) {
+      let titleA = a.title.toLowerCase()
+      let titleB = b.title.toLowerCase()
+      if (titleA < titleB){
+        return -1
+      }
+      if (titleA > titleB){
+        return 1
+      }
+      return 0
+    })
+  }
+
+  sortZtoA = () => {
+    this.props.categories.sort(function(a,b) {
+      let titleA = a.title.toLowerCase()
+      let titleB = b.title.toLowerCase()
+      if (titleA > titleB){
+        return -1
+      }
+      if (titleA < titleB){
+        return 1
+      }
+      return 0
+    })
+  }
+
+  handleChangeCategorySearch = (event) => {
+    // console.log(event.target.value);
+    this.setState({search: event.target.value})
+  }
+
+  searchedCategoryTerm = () => {
+    return this.props.categories.filter((category) => {
+      return category.title.toLowerCase().includes(this.state.search.toLowerCase())
+    })
   }
 
   mapCategories = () => {
-    // console.log(this.props);
-    return this.props.categories.map((category) => {
-      // console.log(category.title);
+    return this.searchedCategoryTerm().map((category) => {
       return (
         <div key={category.id}>
           <div> </div>
@@ -29,14 +79,16 @@ class CategoryMain extends Component {
   }
 
   render() {
-    // console.log(this.props);
+    // console.log(this.props.categories);
+    // console.log(this.state.categories);
+    // console.log(this.state.sort);
     return (
       <div>
 
         <div>
-          <button> Sort </button>
+          <button onClick={this.handleClickCategorySort}> Sort </button>
           <button> Add </button>
-          <input type="text" placeholder="Search"></input>
+          <input type="text" placeholder="Search" onChange={this.handleChangeCategorySearch}></input>
         </div>
 
         {this.mapCategories()}

@@ -21,7 +21,7 @@ class Profile extends Component {
       <div>
 
         <div>
-          <img src='https://www.w3schools.com/howto/img_avatar.png' alt=''></img>
+          <img src='https://www.w3schools.com/howto/img_avatar.png' alt='' width="275" height="300"></img>
           <div></div>
             <div> First Name: {this.props.user.first_name}</div>
             <div> Last Name: {this.props.user.last_name}</div>
