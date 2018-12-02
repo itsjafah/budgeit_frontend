@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getCategories, deleteCategory } from '../../actions/category'
+import { deleteCategory } from '../../actions/category'
 
 class CategoryMain extends Component {
   state = {
@@ -9,20 +9,16 @@ class CategoryMain extends Component {
     search: ''
   }
 
-  componentDidMount() {
-    this.props.getCategories()
-  }
-
   handleClickDeleteCategory = (category) => {
     this.props.deleteCategory(category)
   }
 
   handleClickCategorySort = () => {
     if (this.state.sort === false) {
-      this.sortAToZ()
+      // this.sortAToZ()
       this.setState({categories: this.props.categories, sort: true})
     } else if (this.state.sort === true) {
-      this.sortZtoA()
+      // this.sortZtoA()
       this.setState({categories: this.props.categories, sort: false})
     }
   }
@@ -79,7 +75,7 @@ class CategoryMain extends Component {
   }
 
   render() {
-    // console.log(this.props.categories);
+    // console.log(this.props);
     // console.log(this.state.categories);
     // console.log(this.state.sort);
     return (
@@ -99,15 +95,15 @@ class CategoryMain extends Component {
 }
 
 const mapStateToProps = state => {
+  // console.log(state);
   return {
     categories: state.categoryReducer.categories,
-    category: state.categoryReducer.category
+    budgets: state.budgetReducer.budgets
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategories: () => getCategories(dispatch),
     deleteCategory: (category) => deleteCategory(category,dispatch)
   }
 }

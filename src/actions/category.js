@@ -1,30 +1,29 @@
 import {
   GET_CATEGORIES,
-  // GET_CATEGORY,
   ADD_CATEGORY,
-  // EDIT_CATEGORY,
+  EDIT_CATEGORY,
   DELETE_CATEGORY,
 } from '../constants/action-type'
 
-export const getCategories = (dispatch) => {
- fetch('http://localhost:3000/categories')
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data)
-      dispatch({ type: GET_CATEGORIES, payload: data })
-    })
-}
-
-export const getCategory = (category, dispatch) => {
-  fetch()
-
-  // dispatch({ type: GET_CATEGORY, payload: data })
-}
+// export const getCategories = (dispatch) => {
+//   fetch('http://localhost:3000/categories', {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem('jwt')}`
+//     }
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       // console.log(data)
+//       dispatch({ type: GET_CATEGORIES, payload: data })
+//     })
+// }
 
 export const addCategory = (category, dispatch) => {
-  return fetch('http://localhost:3000/categories', {
+  fetch('http://localhost:3000/categories', {
     method: 'POST',
     headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -33,9 +32,7 @@ export const addCategory = (category, dispatch) => {
     .then(response => response.json())
     .then(data => {
       // console.log(data);
-      // debugger
       dispatch({ type: ADD_CATEGORY, payload: data })
-      return data
     })
 }
 
@@ -46,9 +43,11 @@ export const editCategory = (category, dispatch) => {
 }
 
 export const deleteCategory = (category, dispatch) => {
-  // console.log(category);
   fetch(`http://localhost:3000/categories/${category.id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`
+    }
   })
   dispatch({ type: DELETE_CATEGORY, payload: category })
 }

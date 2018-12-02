@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addCategory, getCategories } from '../../actions/category'
+import { addCategory } from '../../actions/category'
 import './CategoryAdd.css'
+
+const COLORS = [
+  '#A3586D',
+  '#5C4A72',
+  '#f3b05a',
+  '#f4874b',
+  '#346a4e',
+  '#192e5B',
+  '#1d65a6',
+  '#72a2c0',
+  '#bf988F'
+]
 
 class CategoryAdd extends Component {
   state = {
     title: '',
-    color: ''
+    color: '',
+    budget_id: ''
   }
 
   handleChange = (event) => {
@@ -14,51 +27,67 @@ class CategoryAdd extends Component {
     this.setState({ [event.target.name]: event.target.value})
   }
 
-  handleClickColor = (event) => {
+  handleClickColor = (idx) => {
     // console.log(event.target.id);
-    this.setState({ color: event.target.id})
+    this.setState({ color: COLORS[idx] })
   }
 
   handleSubmitCategory = (event) => {
     // console.log(this.props.category);
     event.preventDefault()
-    if (this.state.title && this.state.color) {
+    // console.log(this.state);
+    if (this.state.budget_id && this.state.title && this.state.color) {
       let category = { ...this.props.category, ...this.state}
       // console.log(category);
       this.props.addCategory(category)
-      .then(()=>this.props.getCategories())
       event.target.reset()
     } else {
       alert('Please add a title and select a color.')
     }
     this.setState({
       title: '',
-      color: ''
+      color: '',
+      budget_id: ''
+    })
+  }
+
+  selectBudgetOptions = () => {
+    return this.props.budgets.map((budget) => {
+      return <option value={budget.id}> {budget.description} </option>
     })
   }
 
   render() {
     // console.log(this.props);
+
     return (
       <div>
         <form onSubmit={this.handleSubmitCategory}>
           <div>
+
+            <label> Budget: </label>
+            <select name="budget_id" onChange={this.handleChange} value={this.state.budget_id}>
+              <option value="" disabled selected hidden>Budget</option>
+              {this.selectBudgetOptions()}
+            </select>
+
             <label> Description: </label>
-            <input type="text" name="title" onChange={this.handleChange}></input>
-            <div id="color_container">
-              <div id="color_1" onClick={this.handleClickColor}> Color </div>
-              <div id="color_2" onClick={this.handleClickColor}> Color </div>
-              <div id="color_3" onClick={this.handleClickColor}> Color </div>
-              <div id="color_4" onClick={this.handleClickColor}> Color </div>
-              <div id="color_5" onClick={this.handleClickColor}> Color </div>
-              <div id="color_6" onClick={this.handleClickColor}> Color </div>
-              <div id="color_7" onClick={this.handleClickColor}> Color </div>
-              <div id="color_8" onClick={this.handleClickColor}> Color </div>
-              <div id="color_9" onClick={this.handleClickColor}> Color </div>
+            <input type="text" name="title" onChange={this.handleChange} value={this.state.title}></input>
+
+            <div>
+              Colors:
             </div>
+            <div id="color_container">
+
+              {COLORS.map((color,idx) => {
+                return <div className="color" style={{backgroundColor: `${color}`}} onClick={()=>this.handleClickColor(idx)}></div>
+              })}
+            </div>
+
             <div>
               <button> Save </button>
             </div>
+
           </div>
         </form>
       </div>
@@ -67,16 +96,15 @@ class CategoryAdd extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state.categoryReducer)
+  // console.log(state)
   return {
     categories: state.categoryReducer.categories,
-    category: state.categoryReducer.category
+    budgets: state.budgetReducer.budgets
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCategories: () => getCategories(dispatch),
     addCategory: category => addCategory(category, dispatch)
   }
 }

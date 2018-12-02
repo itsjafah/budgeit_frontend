@@ -12,11 +12,11 @@ class Profile extends Component {
   }
 
   componentDidMount(){
-    this.props.userProfile()
+    if(localStorage.jwt) this.props.userProfile()
   }
 
   render() {
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <div>
 
@@ -48,7 +48,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
+  console.log(state);
   return {
     user: state.userReducer.user
   }
@@ -56,7 +56,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    userProfile: user => userProfile(user, dispatch)
+    userProfile: user => userProfile(dispatch)
   }
 }
 

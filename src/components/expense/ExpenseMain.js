@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getExpenses, deleteExpense } from '../../actions/expense'
+import { deleteExpense } from '../../actions/expense'
+import './ExpenseMain.css'
 
 class ExpenseMain extends Component {
   state = {
@@ -10,14 +11,9 @@ class ExpenseMain extends Component {
     sortAmounts: false
   }
 
-  componentDidMount() {
-    this.props.getExpenses()
-  }
-
   handleClickDeleteExpense = (expense) => {
     // console.log(expense);
     this.props.deleteExpense(expense)
-    .then(()=>this.props.getExpenses())
   }
 
   handleClickExpenseDescriptionSort = () => {
@@ -118,25 +114,48 @@ class ExpenseMain extends Component {
     })
   }
 
-  mapExpenses = () => {
-    if (this.props.expenses.length > 0) {
-      return this.props.expenses.map((expense) => {
-        // console.log(expense)
-          return (
-            <tr key={expense.id}>
-              <td> Category Color </td>
-              <td>{expense.description}</td>
-              <td>{expense.date}</td>
-              <td>${expense.amount}</td>
-              <td>$-{expense.amount} </td>
-              <td>
-                <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
-                <button id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
-              </td>
+  mapBudgets = () => {
+    return this.props.budgets.map(budget => {
+      // console.log(budget);
+      let categoryBudgets = this.props.categories.filter(category => budget.id === category.budget_id)
+      return <div>
+        <tr id="budget_table_row">
+          <th className="budget_table_headers"> Budget: {budget.description}</th>
+          <th className="budget_table_headers"> Budget Total: ${budget.amount}</th>
+          <th className="budget_table_headers"> Budget Remaining: $-{budget.amount}</th>
+        </tr>
+        {categoryBudgets.map(category => {
+          // console.log(category);
+          let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
+          return <div>
+            <tr id="category_table_row">
+              <th className="category_table_headers"> {category.title} <button> Sort </button></th>
             </tr>
-          )
-      })
-    }
+            <tr id="expense_table_label_row">
+              <th className="expense_table_headers"> Expense Description <button onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
+              <th className="expense_table_headers"> Expense Dates <button onClick={this.handleClickExpenseDateSort}> Sort </button></th>
+              <th className="expense_table_headers"> Expense Amount <button onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
+              <th className="expense_table_headers"> Edit/Delete </th>
+            </tr>
+
+            {categoryExpenses.map(expense => {
+              // console.log(expense);
+              return <div>
+                <tr key={expense.id} id="expense_table_row">
+                  <td className="expense_table_data">{expense.description}</td>
+                  <td className="expense_table_data">{expense.date}</td>
+                  <td className="expense_table_data">${expense.amount}</td>
+                  <td className="expense_table_data">
+                    <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
+                    <button id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
+                  </td>
+                </tr>
+              </div>
+            })}
+          </div>
+        })}
+      </div>
+    })
   }
 
   render() {
@@ -154,31 +173,7 @@ class ExpenseMain extends Component {
         <div>
           <table>
             <tbody>
-
-              <tr>
-                <th> Budget </th>
-                <th></th>
-                <th></th>
-                <th> Budget Amount </th>
-              </tr>
-
-              <tr>
-                <th> Category <button> Sort </button></th>
-                <th> Expense Description <button onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
-                <th> Expense Dates <button onClick={this.handleClickExpenseDateSort}> Sort </button></th>
-                <th> Expense Amount <button onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
-                <th> Remaining </th>
-              </tr>
-
-              {this.mapExpenses()}
-
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td> Remaining </td>
-              </tr>
-
+              {this.mapBudgets()}
             </tbody>
           </table>
         </div>
@@ -190,14 +185,14 @@ class ExpenseMain extends Component {
 
 const mapStateToProps = state => {
   return {
+    budgets: state.budgetReducer.budgets,
     expenses: state.expenseReducer.expenses,
-    expense: state.expenseReducer.expense
+    categories: state.categoryReducer.categories
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    getExpenses: () => getExpenses(dispatch),
     deleteExpense: (expense) => deleteExpense(expense,dispatch)
   }
 }

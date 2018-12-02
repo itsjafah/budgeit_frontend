@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addExpense, editExpense, getExpenses } from '../../actions/expense'
-import { getCategories } from '../../actions/category'
+import { editExpense } from '../../actions/expense'
 
 class ExpenseEdit extends Component {
   state = {
@@ -10,12 +9,6 @@ class ExpenseEdit extends Component {
     description: '',
     date: '',
     amount: '',
-    user_id: 1,
-  }
-
-  componentDidMount() {
-    this.props.getCategories()
-    this.setState({categories: this.props.categories})
   }
 
   componentDidUpdate(prevProps) {
@@ -23,10 +16,10 @@ class ExpenseEdit extends Component {
     // console.log(this.props);
     if (this.props.selectedExpense !== prevProps.selectedExpense && this.props.selectedExpense) {
        this.setState({
-        category_id: this.props.selectedExpense.categories.id,
-        description: this.props.selectedExpense.description,
-        date: this.props.selectedExpense.date,
-        amount: this.props.selectedExpense.amount
+         category_id: '',
+         description: '',
+         date: '',
+         amount: '',
       })
     }
   }
@@ -36,23 +29,12 @@ class ExpenseEdit extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  handleSubmitExpense = (event) => {
+  handleEditExpense = (event) => {
     event.preventDefault()
-    // console.log(this.props.expense)
-    // console.log(this.state)
-    if (this.state.category_id && this.state.description && this.state.date && this.state.amount) {
-      let expense = { ...this.props.expense, ...this.state}
 
-      if (this.props.selectedExpense) {
-        expense = { ...this.props.selectedExpense, ...this.state }
-        this.props.handleSubmit()
-        this.props.editExpense(expense)
-          .then(()=>this.props.getExpenses())
-      } else {
-
-        this.props.addExpense(expense)
-          .then(()=>this.props.getExpenses())
-      }
+    if (this.props.selectedExpense.category_id && this.props.selectedExpense.description && this.props.selectedExpense.date && this.props.selectedExpense.amount) {
+      let expense = { ...this.props.selectedExpense, ...this.state}
+      this.props.editExpense(expense)
       event.target.reset()
     } else {
       alert('Please fill out all information.')
@@ -62,23 +44,30 @@ class ExpenseEdit extends Component {
       description: '',
       date: '',
       amount: '',
-      user_id: 1
+    })
+  }
+
+  selectedExpenseOptions = () => {
+    return this.props.categories.map((category) => {
+      return <option key={category.id} value={category.id}> {category.title} </option>
     })
   }
 
   render() {
     // console.log(this.state);
+    const category = this.props.categories.find(category => category.id === this.props.selectedExpense.category_id)
+    console.log(category);
     return (
       <div>
         <div> Expense </div>
-        <form onSubmit={this.handleSubmitExpense}>
+        <form onSubmit={this.handleEditExpense}>
           <select name="category_id" onChange={this.handleChange} value={this.state.category_id}>
-            <option value="" disabled selected hidden>Category</option>
-            {this.props.categories.map((category) => <option key={category.id} value={category.id}>{category.title}</option>)}
+            <option value={category.id}>{category.title}</option>
+            {this.selectedExpenseOptions()}
           </select>
-          <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
-          <input type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
-          <input type="text" name="amount" onChange={this.handleChange} value={this.state.amount}></input>
+          <input type="text" name="description" onChange={this.handleChange} value={this.props.selectedExpense.description}></input>
+          <input type="date" name="date" onChange={this.handleChange} value={this.props.selectedExpense.date}></input>
+          <input type="text" name="amount" onChange={this.handleChange} value={this.props.selectedExpense.amount}></input>
           <button> Save </button>
         </form>
       </div>
@@ -88,17 +77,14 @@ class ExpenseEdit extends Component {
 
 const mapStateToProps = state => {
   return {
-    expense: state.expenseReducer.expense,
+    expenses: state.expenseReducer.expenses,
     categories: state.categoryReducer.categories
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    addExpense: expense => addExpense(expense, dispatch),
-    editExpense: expense => editExpense(expense, dispatch),
-    getExpenses: expense => getExpenses(dispatch),
-    getCategories: () => getCategories(dispatch)
+    editExpense: expense => editExpense(expense, dispatch)
   }
 }
 

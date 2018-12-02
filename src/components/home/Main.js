@@ -4,7 +4,6 @@ import './Main.css'
 class WeekMonthMain extends Component {
 
   render() {
-    console.log(this.props.history);
     return (
       <div id="home-main">
         <div id="main-container">

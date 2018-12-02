@@ -6,6 +6,13 @@ import Profile from './Profile'
 import ProfileEdit from './ProfileEdit'
 
 class Home extends Component {
+  state = {
+    main: true,
+    signup: false,
+    login: false,
+    profile: false,
+    profileEdit: false
+  }
 
   render() {
     return (

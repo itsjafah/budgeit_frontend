@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { getBudgets, deleteBudget } from '../../actions/budget'
+import { deleteBudget } from '../../actions/budget'
 
 class BudgetMain extends Component {
   state = {
-    budgets: [],
     sort: false,
     search: ''
-  }
-
-  componentDidMount() {
-    this.props.getBudgets()
   }
 
   handleClickDeleteBudget = (budget) => {
@@ -60,7 +55,9 @@ class BudgetMain extends Component {
   }
 
   searchedBudgetTerm = () => {
+    // console.log(this.props.budgets)
     return this.props.budgets.filter((budget) => {
+      // debugger
       return budget.description.toLowerCase().includes(this.state.search.toLowerCase())
     })
   }
@@ -109,7 +106,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getBudgets: () => getBudgets(dispatch),
     deleteBudget: (budget) => deleteBudget(budget, dispatch)
   }
 }

@@ -1,4 +1,4 @@
-import { GET_BUDGETS, GET_BUDGET, ADD_BUDGET, EDIT_BUDGET, DELETE_BUDGET } from "../constants/action-type";
+import { GET_BUDGETS, ADD_BUDGET, EDIT_BUDGET, DELETE_BUDGET } from "../constants/action-type";
 
 const initialState = {
   budgets: []
@@ -10,10 +10,6 @@ const budgetReducer = (state = initialState, action) => {
 
     case GET_BUDGETS:
       budgets = action.payload
-      return { ...state, budgets }
-
-    case GET_BUDGET:
-      budgets = [...state.budgets, action.payload]
       return { ...state, budgets }
 
     case ADD_BUDGET:
@@ -28,6 +24,7 @@ const budgetReducer = (state = initialState, action) => {
           return budget
         }
       })
+      debugger
       return { ...state, budgets }
 
     case DELETE_BUDGET:

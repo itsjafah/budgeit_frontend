@@ -1,0 +1,36 @@
+#budget_table_row {
+  text-align: left;
+}
+
+.budget_table_headers {
+  text-align: left;
+  width: 600px;
+}
+
+#category_table_row {
+  text-align: left;
+}
+
+.category_table_headers {
+  text-align: left;
+}
+
+#expense_table_label_row {
+  width: 300px;
+  text-align: left;
+}
+
+.expense_table_headers {
+  width: 300px;
+  text-align: left;
+}
+
+#expense_table_row {
+  width: 300px;
+  text-align: left;
+}
+
+.expense_table_data {
+  width: 300px;
+  text-align: left;
+}

@@ -1,4 +1,4 @@
-import { GET_CATEGORIES, GET_CATEGORY, ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY } from "../constants/action-type";
+import { GET_CATEGORIES, ADD_CATEGORY, EDIT_CATEGORY, DELETE_CATEGORY } from "../constants/action-type";
 
 const initialState = {
   categories: []
@@ -12,9 +12,6 @@ const categoryReducer = (state = initialState, action) => {
       categories = action.payload
       return { ...state, categories }
 
-    case GET_CATEGORY:
-      categories = [...state.categories, action.payload]
-      return { ...state, categories }
 
     case ADD_CATEGORY:
       categories = [...state.categories, action.payload]
@@ -37,6 +34,7 @@ const categoryReducer = (state = initialState, action) => {
         }
       })
       return { ...state, categories }
+
     default:
       return state;
   }

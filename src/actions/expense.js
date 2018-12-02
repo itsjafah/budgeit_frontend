@@ -1,30 +1,30 @@
 import {
   GET_EXPENSES,
-  // GET_EXPENSE,
   ADD_EXPENSE,
   EDIT_EXPENSE,
   DELETE_EXPENSE,
 } from '../constants/action-type'
 
-export const getExpenses = (dispatch) => {
-  fetch('http://localhost:3000/expenses')
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data)
-      dispatch({ type: GET_EXPENSES, payload: data })
-    })
-}
-
-export const getExpense = (expense, dispatch) => {
-  fetch()
-
-  // dispatch({ type: GET_EXPENSE, payload: data })
-}
+// export const getExpenses = (dispatch) => {
+//   fetch('http://localhost:3000/expenses', {
+//     method: 'GET',
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem('jwt')}`
+//     }
+//   })
+//     .then(response => response.json())
+//     .then(data => {
+//       // console.log(data)
+//       dispatch({ type: GET_EXPENSES, payload: data })
+//     })
+// }
 
 export const addExpense = (expense, dispatch) => {
+  console.log(expense);
   return fetch('http://localhost:3000/expenses', {
     method: 'POST',
     headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -34,15 +34,15 @@ export const addExpense = (expense, dispatch) => {
     .then(data => {
       // console.log(data)
       dispatch({ type: ADD_EXPENSE, payload: data })
-      return data
-  })
+    })
 }
 
 export const editExpense = (expense, dispatch) => {
-  // console.log(expense.id);
+  console.log(expense);
   return fetch(`http://localhost:3000/expenses/${expense.id}`, {
     method: 'PATCH',
     headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
@@ -50,20 +50,21 @@ export const editExpense = (expense, dispatch) => {
   })
     .then(response => response.json())
     .then(data => {
-      // console.log(data)
+      console.log(data)
       dispatch({ type: EDIT_EXPENSE, payload: data })
-      return data
     })
 }
 
 export const deleteExpense = (expense, dispatch) => {
   // console.log(expense);
   return fetch(`http://localhost:3000/expenses/${expense.id}`, {
-    method: 'DELETE'
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`
+    }
   })
     .then(response => response.json())
     .then(data => {
-      dispatch({ type: DELETE_EXPENSE, payload: data })
-      return data
+      dispatch({ type: DELETE_EXPENSE, payload: expense })
     })
 }

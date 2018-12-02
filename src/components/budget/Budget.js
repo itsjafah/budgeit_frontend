@@ -6,12 +6,7 @@ import { connect } from 'react-redux'
 
 class Budget extends Component {
   state = {
-    selectedBudget: '',
-    id: '',
-    description: '',
-    amount: '',
-    start_date: '',
-    end_date: ''
+    selectedBudget: ''
   }
 
   handleClickEditBudget = (budget) => {
@@ -34,8 +29,7 @@ class Budget extends Component {
 
 const mapStateToProps = state => {
   return {
-    budget: state.budgetReducer.budget,
-    selectedBudget: state.budgetReducer.selectedBudget
+    budgets: state.budgetReducer.budgets,
   }
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { editBudget, getBudgets } from '../../actions/budget'
+import { editBudget } from '../../actions/budget'
 
 class BudgetEdit extends Component {
   state = {
@@ -8,7 +8,6 @@ class BudgetEdit extends Component {
     amount: '',
     start_date: '',
     end_date: '',
-    user_id: 1
   }
 
   componentDidUpdate(prevProps) {
@@ -19,7 +18,7 @@ class BudgetEdit extends Component {
         description: this.props.selectedBudget.description,
         amount: this.props.selectedBudget.amount,
         start_date: this.props.selectedBudget.start_date,
-        end_date: this.props.selectedBudget.end_date
+        end_date: this.props.selectedBudget.end_date,
       })
     }
   }
@@ -35,9 +34,7 @@ class BudgetEdit extends Component {
 
     if (this.props.selectedBudget.description && this.props.selectedBudget.amount && this.props.selectedBudget.start_date && this.props.selectedBudget.end_date) {
       let budget = { ...this.props.selectedBudget, ...this.state}
-      // console.log(budget);
       this.props.editBudget(budget)
-      .then(()=>this.props.getBudgets())
       event.target.reset()
     } else {
       alert('Please add a description, amount, start date, and/or end date.')
@@ -82,14 +79,12 @@ class BudgetEdit extends Component {
 const mapStateToProps = state => {
   return {
     budgets: state.budgetReducer.budgets,
-    budget: state.budgetReducer.budget,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    editBudget: budget => editBudget(budget, dispatch),
-    getBudgets: () => getBudgets(dispatch)
+    editBudget: budget => editBudget(budget, dispatch)
   }
 }
 
