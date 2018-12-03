@@ -10,19 +10,23 @@ class Budget extends Component {
   }
 
   handleClickEditBudget = (budget) => {
-    // console.log("clicked");
-    // console.log(budget);
     this.setState({selectedBudget: budget})
   }
 
   render() {
-    // console.log(this.state.selectedBudget);
     return (
-      <div>
-        <BudgetMain handleClickEditBudget={this.handleClickEditBudget} />
-        <BudgetAdd />
-        <BudgetEdit selectedBudget={this.state.selectedBudget}/>
-      </div>
+      <React.Fragment>
+        {!!this.props.user.first_name
+        ?
+        <React.Fragment>
+          <BudgetMain handleClickEditBudget={this.handleClickEditBudget} />
+          <BudgetAdd />
+          <BudgetEdit selectedBudget={this.state.selectedBudget}/>
+        </React.Fragment>
+        :
+          null
+        }
+      </React.Fragment>
     );
   }
 }
@@ -30,6 +34,7 @@ class Budget extends Component {
 const mapStateToProps = state => {
   return {
     budgets: state.budgetReducer.budgets,
+    user: state.userReducer.user
   }
 }
 

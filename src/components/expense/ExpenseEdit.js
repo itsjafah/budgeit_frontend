@@ -12,8 +12,6 @@ class ExpenseEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log(this.prevprops);
-    // console.log(this.props);
     if (this.props.selectedExpense !== prevProps.selectedExpense && this.props.selectedExpense) {
        this.setState({
          category_id: '',
@@ -25,7 +23,6 @@ class ExpenseEdit extends Component {
   }
 
   handleChange = (event) => {
-    // console.log(event.target.value)
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -54,22 +51,26 @@ class ExpenseEdit extends Component {
   }
 
   render() {
-    // console.log(this.state);
     const category = this.props.categories.find(category => category.id === this.props.selectedExpense.category_id)
-    console.log(category);
     return (
       <div>
         <div> Expense </div>
+
         <form onSubmit={this.handleEditExpense}>
+
           <select name="category_id" onChange={this.handleChange} value={this.state.category_id}>
             <option value={category.id}>{category.title}</option>
             {this.selectedExpenseOptions()}
           </select>
+
           <input type="text" name="description" onChange={this.handleChange} value={this.props.selectedExpense.description}></input>
           <input type="date" name="date" onChange={this.handleChange} value={this.props.selectedExpense.date}></input>
           <input type="text" name="amount" onChange={this.handleChange} value={this.props.selectedExpense.amount}></input>
+
           <button> Save </button>
+          
         </form>
+
       </div>
     );
   }

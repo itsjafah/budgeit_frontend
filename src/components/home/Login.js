@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { login } from '../../actions/home'
+import './Login.css'
 
 class Login extends Component {
-
   state = {
     email: '',
-    password: ''
+    password: '',
+    showpassword: false
   }
 
   handleChange = (event) => {
@@ -15,7 +16,6 @@ class Login extends Component {
 
   handleSubmitLogin = (event) => {
     event.preventDefault()
-
     if (this.state.email && this.state.password) {
       this.props.login(this.state)
       event.target.reset()
@@ -24,22 +24,36 @@ class Login extends Component {
     }
   }
 
+  onClickPassword = () => {
+    this.setState({showpassword: !this.state.showpassword})
+  }
+
   render() {
-    // console.log(this.props);
     return (
-      <div>
+      <React.Fragment>
+        <div id="login_form_container">
+          <form id="login_form" onSubmit={this.handleSubmitLogin}>
 
-        <form onSubmit={this.handleSubmitLogin}>
-          <label> Email: </label>
-          <input type="text" name="email" onChange={this.handleChange}></input>
+            <div className="login_form_div" >
+              <label className="login_label" > Email: </label>
+              <input className="login_input" type="text" name="email" onChange={this.handleChange}></input>
+            </div>
 
-          <label> Password: </label>
-          <input type="text" name="password" onChange={this.handleChange}></input>
+            <div className="login_form_div" >
+              <label className="login_label" > Password: </label>
+              <input className="login_input" type={this.state.showpassword ? "text" : "password"} name="password" onChange={this.handleChange}></input>
+            </div>
 
-          <button> Login </button>
-        </form>
+            <div id="login_form_checkbox_div">
+              <input type="checkbox" onClick={this.onClickPassword}></input>
+              <label className="show_password_label"> show password </label>
+            </div>
 
-      </div>
+            <button id="login_button"> Login </button>
+
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

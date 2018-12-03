@@ -11,8 +11,6 @@ class BudgetEdit extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    // console.log(this.prevprops);
-    // console.log(this.props);
     if (this.props.selectedBudget !== prevProps.selectedBudget && this.props.selectedBudget) {
        this.setState({
         description: this.props.selectedBudget.description,
@@ -24,14 +22,11 @@ class BudgetEdit extends Component {
   }
 
   handleChangeEdit = (event) => {
-    // console.log(event.target.name);
-    // console.log(event.target.value);
     this.setState({ [event.target.name]:event.target.value})
   }
 
   handleEditBudget = (event) => {
     event.preventDefault()
-
     if (this.props.selectedBudget.description && this.props.selectedBudget.amount && this.props.selectedBudget.start_date && this.props.selectedBudget.end_date) {
       let budget = { ...this.props.selectedBudget, ...this.state}
       this.props.editBudget(budget)
@@ -48,27 +43,30 @@ class BudgetEdit extends Component {
   }
 
   render() {
-    // console.log({...this.state});
     return (
       <div>
 
         <form onSubmit={this.handleEditBudget}>
+
           <div>
             <label> Budget Description: </label>
             <input type="text" name="description" onChange={this.handleChangeEdit} value={this.state.description}></input>
             <label> Budget Amount: </label>
             <input type="text" name="amount" onChange={this.handleChangeEdit} value={this.state.amount}></input>
+
             <div>
               <label> Budget Start Date: </label>
               <input type="date" name="start_date" onChange={this.handleChangeEdit} value={this.state.start_date}></input>
               <label> Budget End Date </label>
               <input type="date" name="end_date" onChange={this.handleChangeEdit} value={this.state.end_date}></input>
             </div>
+
           </div>
 
           <div>
             <button> Save </button>
           </div>
+
         </form>
 
       </div>

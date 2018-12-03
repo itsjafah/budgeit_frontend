@@ -10,19 +10,23 @@ class Expense extends Component {
   }
 
   handleClickEditExpense = (expense) => {
-    console.log("clicked");
-    console.log(expense);
     this.setState({selectedExpense: expense})
   }
 
   render() {
-    // console.log(this.state);
     return (
-      <div>
-        <ExpenseMain handleClickEditExpense={this.handleClickEditExpense}/>
-        <ExpenseAdd />
-        {this.state.selectedExpense ? <ExpenseEdit selectedExpense={this.state.selectedExpense}/> : null }
-      </div>
+      <React.Fragment>
+        {!!this.props.user.first_name
+        ?
+          <React.Fragment>
+            <ExpenseMain handleClickEditExpense={this.handleClickEditExpense}/>
+            <ExpenseAdd />
+            {this.state.selectedExpense ? <ExpenseEdit selectedExpense={this.state.selectedExpense}/> : null }
+          </React.Fragment>
+        :
+          null
+        }
+      </React.Fragment>
     );
   }
 }
@@ -30,6 +34,7 @@ class Expense extends Component {
 const mapStateToProps = state => {
   return {
     expenses: state.expenseReducer.expenses,
+    user: state.userReducer.user
   }
 }
 

@@ -12,7 +12,6 @@ class ExpenseMain extends Component {
   }
 
   handleClickDeleteExpense = (expense) => {
-    // console.log(expense);
     this.props.deleteExpense(expense)
   }
 
@@ -116,7 +115,6 @@ class ExpenseMain extends Component {
 
   mapBudgets = () => {
     return this.props.budgets.map(budget => {
-      // console.log(budget);
       let categoryBudgets = this.props.categories.filter(category => budget.id === category.budget_id)
       return <div>
         <tr id="budget_table_row">
@@ -125,7 +123,6 @@ class ExpenseMain extends Component {
           <th className="budget_table_headers"> Budget Remaining: $-{budget.amount}</th>
         </tr>
         {categoryBudgets.map(category => {
-          // console.log(category);
           let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
           return <div>
             <tr id="category_table_row">
@@ -137,9 +134,7 @@ class ExpenseMain extends Component {
               <th className="expense_table_headers"> Expense Amount <button onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
               <th className="expense_table_headers"> Edit/Delete </th>
             </tr>
-
             {categoryExpenses.map(expense => {
-              // console.log(expense);
               return <div>
                 <tr key={expense.id} id="expense_table_row">
                   <td className="expense_table_data">{expense.description}</td>
@@ -159,7 +154,6 @@ class ExpenseMain extends Component {
   }
 
   render() {
-    // console.log(this.props);
     return (
       <div>
 
@@ -173,7 +167,9 @@ class ExpenseMain extends Component {
         <div>
           <table>
             <tbody>
+
               {this.mapBudgets()}
+              
             </tbody>
           </table>
         </div>

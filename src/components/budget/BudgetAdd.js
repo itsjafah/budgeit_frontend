@@ -11,8 +11,6 @@ class BudgetAdd extends Component {
   }
 
   handleChange = (event) => {
-    // console.log(event.target.name);
-    // console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value})
   }
 
@@ -34,27 +32,32 @@ class BudgetAdd extends Component {
   }
 
   render() {
-    // console.log('BUDGET', this.props)
     return (
       <div>
 
         <form onSubmit={this.handleSubmitBudget}>
+
           <div>
             <label> Budget Description: </label>
             <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
             <label> Budget Amount: </label>
             <input type="text" name="amount" onChange={this.handleChange} value={this.state.amount}></input>
+
             <div>
               <label> Budget Start Date: </label>
               <input type="date" name="start_date" onChange={this.handleChange} value={this.state.start_date}></input>
               <label> Budget End Date </label>
               <input type="date" name="end_date" onChange={this.handleChange} value={this.state.end_date}></input>
             </div>
+
           </div>
 
           <div>
+
             <button> Save </button>
+
           </div>
+
         </form>
 
       </div>

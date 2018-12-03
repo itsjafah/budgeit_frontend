@@ -1,0 +1,22 @@
+#profile_container {
+  border: 1px black solid;
+  position: relative;
+  display: flex;
+  height: 100%;
+  width: 80%;
+  margin: auto;
+}
+
+#user_container {
+  border: 1px black solid;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+}
+
+#profile_graph_container {
+  border: 1px black solid;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
+}

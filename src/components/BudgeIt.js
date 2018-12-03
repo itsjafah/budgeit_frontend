@@ -11,41 +11,89 @@ import {
   Route
 } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { userProfile } from '../actions/home'
-
+import { userProfile, logout } from '../actions/home'
 
 class BudgeIt extends Component {
-
   state = {
-    date: Date()
+    signup: false,
+    login: false,
+    profile: false,
+    profileEdit: false
   }
 
   componentDidMount(){
-    if (localStorage.jwt) {
+    if (this.props.user.first_name) {
       this.props.userProfile()
     }
+  }
+
+  handleClickLogout = () => {
+    this.props.logout()
+    this.setState({signup: false, login:false})
+  }
+
+  handleClickSignup = () => {
+    // console.log('SIGNUP', "clicked");
+    this.setState({signup: true, login: false})
+  }
+
+  handleClickLogin = () => {
+    // console.log('LOGIN', "clicked");
+    this.setState({login: true, signup: false})
+  }
+
+  handleClickHome = () => {
+    this.setState({signup: false, login:false})
   }
 
   render() {
     return (
       <Router>
-        <div>
-          <div> {this.state.date} </div>
-          <Navbar />
-            <Route exact path="/home" component={Home} />
-            <Route exact path="/budgets" component={Budget} />
-            <Route exact path="/categories" component={Category} />
-            <Route exact path="/expenses" component={Expense} />
-            <Route exact path="/weekmonth" component={WeekMonth} />
-            <Route exact path="/year" component={Year} />
-        </div>
+        <React.Fragment>
+          <Navbar
+            handleClickLogout={this.handleClickLogout}
+            handleClickHome={this.handleClickHome}
+          />
+            <Route exact path="/home" render={props =>
+              <Home
+                handleClickSignup={this.handleClickSignup}
+                signup={this.state.signup}
+                handleClickLogin={this.handleClickLogin}
+                login={this.state.login}
+              />}
+            />
+            <Route exact path="/budgets" render={props =>
+              <Budget
+
+              />}
+            />
+          <Route exact path="/categories" render={props =>
+              <Category
+
+              />}
+            />
+          <Route exact path="/expenses" render={props =>
+              <Expense
+
+              />}
+            />
+          <Route exact path="/weekmonth" render={props =>
+              <WeekMonth
+
+              />}
+            />
+          <Route exact path="/year" render={props =>
+              <Year
+
+              />}
+            />
+        </React.Fragment>
       </Router>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     user: state.userReducer.user
   }
@@ -53,7 +101,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    userProfile: user => userProfile(dispatch)
+    userProfile: user => userProfile(dispatch),
+    logout: user => logout(user, dispatch)
   }
 }
 

@@ -3,16 +3,16 @@ import { editUser } from '../../actions/home'
 import { connect } from 'react-redux'
 
 class ProfileEdit extends Component {
-
   state = {
+    user_id: '',
     first_name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
+    showpassword: false
   }
 
   componentDidUpdate(prevProps) {
-    // console.log(this.props, prevProps);
     if (this.props.user.id !== prevProps.user.id) {
       this.setState({
         first_name: this.props.user.first_name,
@@ -23,7 +23,6 @@ class ProfileEdit extends Component {
   }
 
   handleChange = (event) => {
-    // console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value })
   }
 
@@ -32,7 +31,6 @@ class ProfileEdit extends Component {
 
     if (this.state.first_name && this.state.last_name && this.state.email && this.state.password) {
       let user = { ...this.props.user, ...this.state }
-      // console.log(user);
       this.props.editUser(user)
       event.target.reset()
     } else {
@@ -40,12 +38,18 @@ class ProfileEdit extends Component {
     }
   }
 
+  onClickPassword = () => {
+    this.setState({showpassword: !this.state.showpassword})
+  }
+
   render() {
-    // console.log(this.props)
     return (
-      <div>
+      <React.Fragment>
         <form onSubmit={this.handleSubmitEditProfile}>
+
+          <button> Close </button>
           <img src='' alt=''></img>
+
           <div>
             <label> First Name: </label>
             <input type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
@@ -57,18 +61,21 @@ class ProfileEdit extends Component {
             <input type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
 
             <label> Password: </label>
-            <input type="text" name='password' onChange={this.handleChange}></input>
+            <input type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
 
+            <label> show password </label>
+            <input type="checkbox" onClick={this.onClickPassword}></input>
             <button> Save </button>
+
           </div>
+
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     user: state.userReducer.user
   }

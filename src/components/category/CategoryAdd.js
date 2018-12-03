@@ -23,22 +23,17 @@ class CategoryAdd extends Component {
   }
 
   handleChange = (event) => {
-    // console.log(event.target.value);
     this.setState({ [event.target.name]: event.target.value})
   }
 
   handleClickColor = (idx) => {
-    // console.log(event.target.id);
     this.setState({ color: COLORS[idx] })
   }
 
   handleSubmitCategory = (event) => {
-    // console.log(this.props.category);
     event.preventDefault()
-    // console.log(this.state);
     if (this.state.budget_id && this.state.title && this.state.color) {
       let category = { ...this.props.category, ...this.state}
-      // console.log(category);
       this.props.addCategory(category)
       event.target.reset()
     } else {
@@ -53,15 +48,14 @@ class CategoryAdd extends Component {
 
   selectBudgetOptions = () => {
     return this.props.budgets.map((budget) => {
-      return <option value={budget.id}> {budget.description} </option>
+      return <option value={budget.id} key={budget.id}> {budget.description} </option>
     })
   }
 
   render() {
-    // console.log(this.props);
-
     return (
       <div>
+
         <form onSubmit={this.handleSubmitCategory}>
           <div>
 
@@ -89,6 +83,7 @@ class CategoryAdd extends Component {
             </div>
 
           </div>
+
         </form>
       </div>
     );
@@ -96,7 +91,6 @@ class CategoryAdd extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state)
   return {
     categories: state.categoryReducer.categories,
     budgets: state.budgetReducer.budgets

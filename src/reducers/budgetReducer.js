@@ -24,7 +24,6 @@ const budgetReducer = (state = initialState, action) => {
           return budget
         }
       })
-      debugger
       return { ...state, budgets }
 
     case DELETE_BUDGET:

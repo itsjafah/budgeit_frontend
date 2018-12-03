@@ -1,24 +1,192 @@
-#home-main {
-  /* border: 1px black solid; */
-
+#image {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.3;
 }
 
-#main-container {
+#main_container {
   /* border: 1px black solid; */
-
+  position: relative;
+  height: 450px;
 }
 
-#app-logo {
+#parallelogram_container{
   /* border: 1px black solid; */
-
+  position: relative;
+  width: 70%;
+  margin: auto;
+  height: 100%;
 }
 
-#button-container {
+#parallelogram1 {
   /* border: 1px black solid; */
-
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: #B9F5D8;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  opacity: .9;
 }
 
-.user-button {
+#parallelogram_1 {
+  /* border: 1px black solid; */
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: #B9F5D8;
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  opacity: .9;
+  animation-name: move1;
+  animation-duration: 5s;
+}
 
-  /* margin-bottom: 25%; */
+@keyframes move1 {
+  0%  {background-color:#B9F5D8; left:0px; top:0px;}
+  25%  {background-color:#B9F5D8; left:600px; top:0px;}
+  50%  {background-color:#B9F5D8; left:600px; top:300px;}
+  75%  {background-color:#B9F5D8; left:0px; top:300px;}
+  100% {background-color:#B9F5D8; left:0px; top:0px;}
+}
+
+#parallelogram2 {
+  /* border: 1px black solid; */
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: grey;
+  display: inline-block;
+  position: absolute;
+  top: 140px;
+  left: 0px;
+  z-index: 1;
+  opacity: .8;
+}
+
+#parallelogram_2 {
+  /* border: 1px black solid; */
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: grey;
+  display: inline-block;
+  position: absolute;
+  top: 140px;
+  left: 0px;
+  z-index: 1;
+  opacity: .8;
+  animation-name: move2;
+  animation-duration: 5s;
+}
+
+@keyframes move2 {
+  25%  {background-color:grey; left:0px; top:0px;}
+  25%  {background-color:grey; left:500px; top:140px;}
+  50%  {background-color:grey; left:500px; top:340px;}
+  75%  {background-color:grey; left:0px; top:340px;}
+  100% {background-color:grey; left:0px; top:140px;}
+}
+
+#parallelogram3 {
+  /* border: 1px black solid; */
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: #6B8F71;
+  display: inline-block;
+  position: absolute;
+  top: 280px;
+  left: 0px;
+  z-index: 0;
+  opacity: .7;
+}
+
+#parallelogram_3 {
+  /* border: 1px black solid; */
+  width: 800px;
+  height: 150px;
+  transform: skew(-40deg);
+  background: #6B8F71;
+  display: inline-block;
+  position: absolute;
+  top: 280px;
+  left: 0px;
+  z-index: 0;
+  opacity: .7;
+  animation-name: move3;
+  animation-duration: 5s;
+}
+
+@keyframes move3 {
+  25%  {background-color:#6B8F71; left:0px; top:0px;}
+  25%  {background-color:#6B8F71; left:400px; top:280px;}
+  50%  {background-color:#6B8F71; left:400px; top:380px;}
+  75%  {background-color:#6B8F71; left:0px; top:380px;}
+  100% {background-color:#6B8F71; left:0px; top:280px;}
+}
+
+#container {
+  /* border: 1px black solid; */
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+#app_logo {
+  /* border: 1px black solid; */
+  position: absolute;
+  font-size: 70px;
+  z-index: 4;
+  float: left;
+  display: inline-block;
+  margin-left: 65vh;
+  margin-top: 17vh;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 1px 4px black;
+}
+
+#app_logo:hover{
+  color: white;
+  text-shadow: 5px 4px 7px black;
+}
+
+#button_container {
+  /* border: 1px black solid; */
+  position: relative;
+  z-index: 3;
+  margin: auto;
+  float: right;
+  width: 25%;
+}
+
+.user_button {
+  /* border: 1px black solid; */
+  border-radius: 5px;
+  height: 40px;
+  width: 130px;
+  margin: 2%;
+  float: right;
+  color: white;
+  background-color: grey;
+  font-size: 15px;
+}
+
+.user_button:hover {
+  background-color: #6B8F71;
+  color: black;
 }

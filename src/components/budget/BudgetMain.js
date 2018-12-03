@@ -55,9 +55,7 @@ class BudgetMain extends Component {
   }
 
   searchedBudgetTerm = () => {
-    // console.log(this.props.budgets)
     return this.props.budgets.filter((budget) => {
-      // debugger
       return budget.description.toLowerCase().includes(this.state.search.toLowerCase())
     })
   }
@@ -77,8 +75,6 @@ class BudgetMain extends Component {
   }
 
   render() {
-    // console.log(this.props.budgets);
-    // console.log(this.state.budgets);
     return (
       <div>
 

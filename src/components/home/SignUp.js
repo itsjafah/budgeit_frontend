@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import { addUser } from '../../actions/home'
 import { connect } from 'react-redux'
+import './SignUp.css'
 
 class SignUp extends Component {
-
   state = {
     first_name: '',
     last_name: '',
     email: '',
-    password: ''
+    password: '',
+    showpassword: false
   }
 
   handleChange = (event) => {
-    // console.log(event.target.name, event.target.value)
     this.setState({ [event.target.name]: event.target.value })
   }
 
   handleSubmitSignup = (event) => {
     event.preventDefault()
-
     if (this.state.first_name && this.state.last_name && this.state.email && this.state.password) {
-
       this.props.addUser(this.state)
       event.target.reset()
     } else {
@@ -28,29 +26,47 @@ class SignUp extends Component {
     }
   }
 
+  onClickPassword = () => {
+    this.setState({showpassword: !this.state.showpassword})
+  }
+
   render() {
-    // console.log(this.props)
-    // console.log('SIGN UP STATE: ', this.state);
     return (
-      <div>
+      <React.Fragment>
+        <div id="sign_up_form_container">
+          <form id="sign_up_form" onSubmit={this.handleSubmitSignup}>
 
-        <form onSubmit={this.handleSubmitSignup}>
-          <label> First Name: </label>
-          <input type="text" name='first_name' onChange={this.handleChange}></input>
+            <div className="sign_up_form_div">
+              <label className="sign_up_label"> First Name: </label>
+              <input className="sign_up_input" type="text" name='first_name' onChange={this.handleChange}></input>
+            </div>
 
-          <label> Last Name: </label>
-          <input type="text" name='last_name' onChange={this.handleChange}></input>
+            <div className="sign_up_form_div">
+              <label className="sign_up_label"> Last Name: </label>
+              <input className="sign_up_input" type="text" name='last_name' onChange={this.handleChange}></input>
+            </div>
 
-          <label> Email: </label>
-          <input type="text" name='email' onChange={this.handleChange}></input>
+            <div className="sign_up_form_div">
+              <label className="sign_up_label"> Email: </label>
+              <input className="sign_up_input" type="text" name='email' onChange={this.handleChange}></input>
+            </div>
 
-          <label> Password: </label>
-          <input type="text" name='password' onChange={this.handleChange}></input>
+            <div className="sign_up_form_div">
+              <label className="sign_up_label"> Password: </label>
+              <input className="sign_up_input" type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
+            </div>
 
-          <button> Signup </button>
-        </form>
+            <div id="sign_up_form_checkbox_div">
+              <input type="checkbox" onClick={this.onClickPassword}></input>
+              <label className="show_password_label"> show password </label>
+            </div>
 
-      </div>
+            <button id="sign_up_button"> Signup </button>
+
+          </form>
+        </div>
+
+      </React.Fragment>
     );
   }
 }

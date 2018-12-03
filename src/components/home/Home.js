@@ -4,27 +4,42 @@ import SignUp from './SignUp'
 import Login from './Login'
 import Profile from './Profile'
 import ProfileEdit from './ProfileEdit'
+import { connect } from 'react-redux'
 
 class Home extends Component {
-  state = {
-    main: true,
-    signup: false,
-    login: false,
-    profile: false,
-    profileEdit: false
+
+  showpages = () => {
+    if (this.props.signup === true) {
+      return <SignUp />
+    } else if (this.props.login === true) {
+      return <Login />
+    }
   }
 
   render() {
     return (
-      <div>
-        <Main />
-        <SignUp />
-        <Login />
-        <Profile />
-        <ProfileEdit />
-      </div>
+      <React.Fragment>
+        {localStorage.jwt
+        ?
+          <React.Fragment>
+            <Profile />
+            <ProfileEdit />
+          </React.Fragment>
+        :
+          <React.Fragment>
+            <Main handleClickSignup={this.props.handleClickSignup} handleClickLogin={this.props.handleClickLogin}/>
+            {this.showpages()}
+          </React.Fragment>
+        }
+      </React.Fragment>
     );
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    user: state.userReducer.user
+  }
+}
+
+export default connect(mapStateToProps)(Home);

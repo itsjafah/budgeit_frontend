@@ -15,10 +15,10 @@ class CategoryMain extends Component {
 
   handleClickCategorySort = () => {
     if (this.state.sort === false) {
-      // this.sortAToZ()
+      this.sortAToZ()
       this.setState({categories: this.props.categories, sort: true})
     } else if (this.state.sort === true) {
-      // this.sortZtoA()
+      this.sortZtoA()
       this.setState({categories: this.props.categories, sort: false})
     }
   }
@@ -52,7 +52,6 @@ class CategoryMain extends Component {
   }
 
   handleChangeCategorySearch = (event) => {
-    // console.log(event.target.value);
     this.setState({search: event.target.value})
   }
 
@@ -66,8 +65,8 @@ class CategoryMain extends Component {
     return this.searchedCategoryTerm().map((category) => {
       return (
         <div key={category.id}>
-          <div> </div>
-          <div> {category.title} </div>
+          <div></div>
+          <div>{category.title}</div>
           <button onClick={()=>this.handleClickDeleteCategory(category)}> Delete </button>
         </div>
       )
@@ -75,9 +74,6 @@ class CategoryMain extends Component {
   }
 
   render() {
-    // console.log(this.props);
-    // console.log(this.state.categories);
-    // console.log(this.state.sort);
     return (
       <div>
 
@@ -95,7 +91,6 @@ class CategoryMain extends Component {
 }
 
 const mapStateToProps = state => {
-  // console.log(state);
   return {
     categories: state.categoryReducer.categories,
     budgets: state.budgetReducer.budgets

@@ -11,7 +11,6 @@ class Category extends Component {
   }
 
   handleClickEditCategory = (category) => {
-    // console.log(category);
     this.setState ({
       id: category.id,
       title: category.title,
@@ -20,19 +19,26 @@ class Category extends Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
-      <div>
-        <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
-        <CategoryAdd />
-      </div>
+      <React.Fragment>
+        {!!this.props.user.first_name
+        ?
+          <React.Fragment>
+            <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
+            <CategoryAdd />
+          </React.Fragment>
+        :
+          null
+        }
+      </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    category: state.categoryReducer.category
+    category: state.categoryReducer.category,
+    user: state.userReducer.user
   }
 }
 
