@@ -10,7 +10,6 @@ import {
 } from '../constants/action-type'
 
 export const addUser = (user, dispatch) => {
-  console.log(user);
   fetch('http://localhost:3000/signup', {
     method: 'POST',
     headers: {
@@ -48,7 +47,6 @@ export const login = (user, dispatch) => {
         last_name: data.user.last_name,
         email: data.user.email
       }
-      console.log(user);
       dispatch({ type: LOGIN, payload: user })
       dispatch({ type: GET_BUDGETS, payload: budgets})
       dispatch({ type: GET_CATEGORIES, payload: categories})
@@ -86,7 +84,13 @@ export const editUser = (user, dispatch) => {
   })
   .then(response => response.json())
   .then(data => {
-    dispatch({ type: EDIT_PROFILE, payload: data })
+    let user = {
+      first_name: data.user.first_name,
+      last_name: data.user.last_name,
+      email: data.user.email,
+      password: data.user.password
+    }
+    dispatch({ type: EDIT_PROFILE, payload: user })
   })
 }
 

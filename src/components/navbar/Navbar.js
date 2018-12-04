@@ -54,7 +54,7 @@ class Navbar extends Component {
   }
 
   navBar = () => {
-    if (this.props.user.first_name) {
+    if (localStorage.jwt && this.props.user.first_name) {
       return (
         <React.Fragment>
           <div className='navbar'>

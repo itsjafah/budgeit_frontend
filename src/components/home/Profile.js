@@ -9,49 +9,52 @@ class Profile extends Component {
     last_name: '',
     email: '',
     password: '',
-    image: ''
   }
 
   componentDidMount(){
-    // if(this.props.user.first_name) this.props.userProfile()
-    if(localStorage.jwt) this.props.userProfile()
+    if(localStorage.jwt || this.props.user.first_name) this.props.userProfile()
   }
 
   render() {
     return (
       <React.Fragment>
-        <div id="profile_container">
+        {localStorage.jwt && this.props.user.first_name
+        ?
+          <div id="profile_container">
 
-          <div id="user_container">
-            <div>
-              <div> Add Picture </div>
-              <img src={this.props.user.image || "https://www.w3schools.com/howto/img_avatar.png"} alt="" width="275" height="300"/>
-            </div>
-            <div>
-              <div>
-                <div> First Name: {this.props.user.first_name}</div>
-                <div> Last Name: {this.props.user.last_name}</div>
-                <div> Email: {this.props.user.email}</div>
-                <div> Password: {this.props.user.password}</div>
+            <div id="user_container">
+              <div id="profile_picture_container">
+                <div> Add Picture </div>
+                <img id="profile_picture" src={this.props.user.image || "https://www.w3schools.com/howto/img_avatar.png"} alt="" width="275" height="300"/>
               </div>
               <div>
-                <button> Edit </button>
+                <div id="profile_information">
+                  <div className="profile_info"> First Name: {this.props.user.first_name}</div>
+                  <div className="profile_info"> Last Name: {this.props.user.last_name}</div>
+                  <div className="profile_info"> Email: {this.props.user.email}</div>
+                  <div className="profile_info"> Password: {this.props.user.password}</div>
+                </div>
+                <div>
+                  <button id="profile_edit_button" onClick={this.props.handleClickEditProfile}> Edit </button>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div id="profile_graph_container">
-            <div>
-              <select>
-                <option> Week </option>
-                <option> Month </option>
-              </select>
-              <div> ChartJS </div>
+            <div id="profile_graph_container">
+              <div>
+                <select>
+                  <option> Week </option>
+                  <option> Month </option>
+                </select>
+                <div> ChartJS </div>
+              </div>
+              <div> Description </div>
             </div>
-            <div> Description </div>
-          </div>
 
-        </div>
+          </div>
+        :
+          null
+        }
       </React.Fragment>
     );
   }

@@ -7,8 +7,11 @@ import ProfileEdit from './ProfileEdit'
 import { connect } from 'react-redux'
 
 class Home extends Component {
+  state = {
+    profileEdit: false
+  }
 
-  showpages = () => {
+  showSignupLogin = () => {
     if (this.props.signup === true) {
       return <SignUp />
     } else if (this.props.login === true) {
@@ -16,19 +19,23 @@ class Home extends Component {
     }
   }
 
+  handleClickEditProfile = () => {
+    this.setState({profileEdit: !this.state.profileEdit})
+  }
+
   render() {
     return (
       <React.Fragment>
-        {localStorage.jwt
+        {localStorage.jwt && this.props.user.first_name
         ?
           <React.Fragment>
-            <Profile />
-            <ProfileEdit />
+            <Profile handleClickEditProfile={this.handleClickEditProfile}/>
+            <ProfileEdit profileEdit={this.state.profileEdit} />
           </React.Fragment>
         :
           <React.Fragment>
             <Main handleClickSignup={this.props.handleClickSignup} handleClickLogin={this.props.handleClickLogin}/>
-            {this.showpages()}
+            {this.showSignupLogin()}
           </React.Fragment>
         }
       </React.Fragment>

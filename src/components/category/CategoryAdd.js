@@ -74,7 +74,7 @@ class CategoryAdd extends Component {
             <div id="color_container">
 
               {COLORS.map((color,idx) => {
-                return <div className="color" style={{backgroundColor: `${color}`}} onClick={()=>this.handleClickColor(idx)}></div>
+                return <div className="color" key={idx} style={{backgroundColor: `${color}`}} onClick={()=>this.handleClickColor(idx)}></div>
               })}
             </div>
 

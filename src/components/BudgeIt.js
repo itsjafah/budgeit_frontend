@@ -17,12 +17,11 @@ class BudgeIt extends Component {
   state = {
     signup: false,
     login: false,
-    profile: false,
     profileEdit: false
   }
 
   componentDidMount(){
-    if (this.props.user.first_name) {
+    if (localStorage.jwt || this.props.user.first_name) {
       this.props.userProfile()
     }
   }
@@ -33,17 +32,19 @@ class BudgeIt extends Component {
   }
 
   handleClickSignup = () => {
-    // console.log('SIGNUP', "clicked");
     this.setState({signup: true, login: false})
   }
 
   handleClickLogin = () => {
-    // console.log('LOGIN', "clicked");
     this.setState({login: true, signup: false})
   }
 
   handleClickHome = () => {
     this.setState({signup: false, login:false})
+  }
+
+  handleClickEditProfile = () => {
+    this.setState({profileEdit: !this.state.profileEdit})
   }
 
   render() {
@@ -60,6 +61,8 @@ class BudgeIt extends Component {
                 signup={this.state.signup}
                 handleClickLogin={this.handleClickLogin}
                 login={this.state.login}
+                handleClickEditProfile={this.handleClickEditProfile}
+                profileEdit={this.state.profileEdit}
               />}
             />
             <Route exact path="/budgets" render={props =>

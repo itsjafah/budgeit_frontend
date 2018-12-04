@@ -28,7 +28,6 @@ class ProfileEdit extends Component {
 
   handleSubmitEditProfile = (event) => {
     event.preventDefault()
-
     if (this.state.first_name && this.state.last_name && this.state.email && this.state.password) {
       let user = { ...this.props.user, ...this.state }
       this.props.editUser(user)
@@ -45,31 +44,35 @@ class ProfileEdit extends Component {
   render() {
     return (
       <React.Fragment>
-        <form onSubmit={this.handleSubmitEditProfile}>
+        {this.props.profileEdit
+        ?
+          <div id="profile_edit_container">
+            <form id="profile_edit_form" onSubmit={this.handleSubmitEditProfile}>
 
-          <button> Close </button>
-          <img src='' alt=''></img>
+              <div>
+                <label> First Name: </label>
+                <input type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
 
-          <div>
-            <label> First Name: </label>
-            <input type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
+                <label> Last Name: </label>
+                <input type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
 
-            <label> Last Name: </label>
-            <input type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
+                <label> Email: </label>
+                <input type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
 
-            <label> Email: </label>
-            <input type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
+                <label> Password: </label>
+                <input type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
 
-            <label> Password: </label>
-            <input type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
+                <label> show password </label>
+                <input type="checkbox" onClick={this.onClickPassword}></input>
+                <button> Save </button>
 
-            <label> show password </label>
-            <input type="checkbox" onClick={this.onClickPassword}></input>
-            <button> Save </button>
+              </div>
 
+            </form>
           </div>
-
-        </form>
+        :
+        null
+        }
       </React.Fragment>
     );
   }
