@@ -61,12 +61,12 @@ class CategoryAdd extends Component {
 
             <label> Budget: </label>
             <select name="budget_id" onChange={this.handleChange} value={this.state.budget_id}>
-              <option value="" disabled selected hidden>Budget</option>
+              <option value="" disabled selected hidden>Select a budget...</option>
               {this.selectBudgetOptions()}
             </select>
 
             <label> Description: </label>
-            <input type="text" name="title" onChange={this.handleChange} value={this.state.title}></input>
+            <input type="text" name="title" placeholder="Enter a description..." Change={this.handleChange} value={this.state.title}></input>
 
             <div>
               Colors:

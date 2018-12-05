@@ -24,8 +24,8 @@ class Category extends Component {
         {!!this.props.user.first_name
         ?
           <React.Fragment>
-            <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
             <CategoryAdd />
+            <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
           </React.Fragment>
         :
           null

@@ -27,7 +27,7 @@ class BudgetEdit extends Component {
 
   handleEditBudget = (event) => {
     event.preventDefault()
-    if (this.props.selectedBudget.description && this.props.selectedBudget.amount && this.props.selectedBudget.start_date && this.props.selectedBudget.end_date) {
+    if (this.props.selectedBudget.description && this.props.selectedBudget.amount && this.props.selectedBudget.start_date && this.props.selectedBudget.end_date && this.state.start_date < this.state.end_date) {
       let budget = { ...this.props.selectedBudget, ...this.state}
       this.props.editBudget(budget)
       event.target.reset()
@@ -52,7 +52,7 @@ class BudgetEdit extends Component {
             <label> Budget Description: </label>
             <input type="text" name="description" onChange={this.handleChangeEdit} value={this.state.description}></input>
             <label> Budget Amount: </label>
-            <input type="text" name="amount" onChange={this.handleChangeEdit} value={this.state.amount}></input>
+            <input type="number" step="0.01" min="0" name="amount" onChange={this.handleChangeEdit} value={this.state.amount}></input>
 
             <div>
               <label> Budget Start Date: </label>

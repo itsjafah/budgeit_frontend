@@ -19,9 +19,9 @@ class Budget extends Component {
         {!!this.props.user.first_name
         ?
         <React.Fragment>
-          <BudgetMain handleClickEditBudget={this.handleClickEditBudget} />
           <BudgetAdd />
           <BudgetEdit selectedBudget={this.state.selectedBudget}/>
+          <BudgetMain handleClickEditBudget={this.handleClickEditBudget} />
         </React.Fragment>
         :
           null

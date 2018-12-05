@@ -19,9 +19,9 @@ class Expense extends Component {
         {!!this.props.user.first_name
         ?
           <React.Fragment>
-            <ExpenseMain handleClickEditExpense={this.handleClickEditExpense}/>
             <ExpenseAdd />
             {this.state.selectedExpense ? <ExpenseEdit selectedExpense={this.state.selectedExpense}/> : null }
+            <ExpenseMain handleClickEditExpense={this.handleClickEditExpense}/>
           </React.Fragment>
         :
           null

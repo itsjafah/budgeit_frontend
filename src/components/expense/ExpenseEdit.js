@@ -58,6 +58,7 @@ class ExpenseEdit extends Component {
         <form onSubmit={this.handleEditExpense}>
 
           <select name="category_id" onChange={this.handleChange} value={this.state.category_id}>
+            <option value="" disabled selected hidden>Category</option>
             <option value={category.id}>{category.title}</option>
             {this.selectedExpenseOptions()}
           </select>
