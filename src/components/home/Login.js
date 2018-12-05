@@ -28,11 +28,21 @@ class Login extends Component {
     this.setState({showpassword: !this.state.showpassword})
   }
 
+  handleCloseButton = () => {
+    document.getElementById("login_form_container").style.display = "none";
+  }
+
   render() {
     return (
       <React.Fragment>
         <div id="login_form_container">
+
+          <div>
+            <button onClick={this.handleCloseButton}> X </button>
+          </div>
+
           <form id="login_form" onSubmit={this.handleSubmitLogin}>
+
 
             <div className="login_form_div" >
               <label className="login_label" > Email: </label>

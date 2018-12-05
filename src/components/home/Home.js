@@ -11,14 +11,6 @@ class Home extends Component {
     profileEdit: false
   }
 
-  showSignupLogin = () => {
-    if (this.props.signup === true) {
-      return <SignUp />
-    } else if (this.props.login === true) {
-      return <Login />
-    }
-  }
-
   handleClickEditProfile = () => {
     this.setState({profileEdit: !this.state.profileEdit})
   }
@@ -35,7 +27,8 @@ class Home extends Component {
         :
           <React.Fragment>
             <Main handleClickSignup={this.props.handleClickSignup} handleClickLogin={this.props.handleClickLogin}/>
-            {this.showSignupLogin()}
+            <SignUp />
+            <Login />
           </React.Fragment>
         }
       </React.Fragment>

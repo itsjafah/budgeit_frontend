@@ -30,10 +30,19 @@ class SignUp extends Component {
     this.setState({showpassword: !this.state.showpassword})
   }
 
+  handleCloseButton = () => {
+    document.getElementById("sign_up_form_container").style.display = "none";
+  }
+
   render() {
     return (
       <React.Fragment>
         <div id="sign_up_form_container">
+
+          <div>
+            <button onClick={this.handleCloseButton}> X </button>
+          </div>
+
           <form id="sign_up_form" onSubmit={this.handleSubmitSignup}>
 
             <div className="sign_up_form_div">
