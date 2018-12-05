@@ -135,11 +135,21 @@ class ExpenseMain extends Component {
               <th className="expense_table_headers"> Edit/Delete </th>
             </tr>
             {categoryExpenses.map(expense => {
+              let beforeDecimal = parseFloat(expense.amount.toString().split(".")[0]);
+              let afterDecimal = parseFloat(expense.amount.toString().split(".")[1]);
+
+              if (isNaN(afterDecimal)) {
+                afterDecimal = '00'
+              } else if (afterDecimal < 10) {
+                afterDecimal = afterDecimal.toString() + '0'
+              }
+              const parsedExpenseAmount = beforeDecimal.toString() + '.' + afterDecimal.toString()
+
               return <div>
                 <tr key={expense.id} id="expense_table_row">
                   <td className="expense_table_data">{expense.description}</td>
                   <td className="expense_table_data">{expense.date}</td>
-                  <td className="expense_table_data">${expense.amount}</td>
+                  <td className="expense_table_data">${parsedExpenseAmount}</td>
                   <td className="expense_table_data">
                     <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
                     <button id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
@@ -169,7 +179,7 @@ class ExpenseMain extends Component {
             <tbody>
 
               {this.mapBudgets()}
-              
+
             </tbody>
           </table>
         </div>

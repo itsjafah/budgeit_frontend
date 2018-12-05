@@ -187,6 +187,6 @@
 }
 
 .user_button:hover {
-  background-color: #6B8F71;
-  color: black;
+  background-color: white;
+  color: grey;
 }

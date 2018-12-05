@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { userProfile } from '../../actions/home'
 import { connect } from 'react-redux'
 import './Profile.css'
+import DoughnutChart from './DoughnutChart'
 
 class Profile extends Component {
   state = {
@@ -41,14 +42,18 @@ class Profile extends Component {
             </div>
 
             <div id="profile_graph_container">
-              <div>
-                <select>
-                  <option> Week </option>
-                  <option> Month </option>
-                </select>
-                <div> ChartJS </div>
+              <div id="profile_graph">
+                <div id="profile_graph_chart_container">
+                  <div id="profile_chart_title"> Expenses by Category </div>
+                  <select id="profile_chart_selector">
+                    <option> Week </option>
+                    <option> Month </option>
+                  </select>
+                </div>
+                <div>
+                  <DoughnutChart />
+                </div>
               </div>
-              <div> Description </div>
             </div>
 
           </div>

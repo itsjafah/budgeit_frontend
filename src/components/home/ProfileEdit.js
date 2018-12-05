@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { editUser } from '../../actions/home'
 import { connect } from 'react-redux'
+import './ProfileEdit.css'
 
 class ProfileEdit extends Component {
   state = {
@@ -49,23 +50,33 @@ class ProfileEdit extends Component {
           <div id="profile_edit_container">
             <form id="profile_edit_form" onSubmit={this.handleSubmitEditProfile}>
 
-              <div>
-                <label> First Name: </label>
-                <input type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
+              <div id="profile_edit_information_container">
+                <div className="profile_edit_form_div">
+                  <label className="profile_info_label"> First Name: </label>
+                  <input className="profile_info_input" type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
+                </div>
 
-                <label> Last Name: </label>
-                <input type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
+                <div className="profile_edit_form_div">
+                  <label className="profile_info_label"> Last Name: </label>
+                  <input className="profile_info_input" type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
+                </div>
 
-                <label> Email: </label>
-                <input type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
+                <div className="profile_edit_form_div">
+                  <label className="profile_info_label"> Email: </label>
+                  <input className="profile_info_input" type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
+                </div>
 
-                <label> Password: </label>
-                <input type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
+                <div className="profile_edit_form_div">
+                  <label className="profile_info_label"> Password: </label>
+                  <input className="profile_info_input" type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
+                </div>
 
-                <label> show password </label>
-                <input type="checkbox" onClick={this.onClickPassword}></input>
-                <button> Save </button>
+                <div id="profile_edit_form_chckbox_div">
+                  <input id="profile_edit_password_checkbox" type="checkbox" onClick={this.onClickPassword}></input>
+                  <label id="profile_edit_show_password_label"> show password </label>
+                </div>
 
+                <button id="profile_edit_save_button"> Save </button>
               </div>
 
             </form>

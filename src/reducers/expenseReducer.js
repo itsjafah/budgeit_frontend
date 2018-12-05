@@ -18,8 +18,14 @@ const expenseReducer = (state = initialState, action) => {
       return { ...state, expenses }
 
     case EDIT_EXPENSE:
-      expense = action.payload
-      return { ...state, expense }
+      expenses = [...state.expenses].map(expense => {
+        if (expense.id === action.payload.id) {
+          return action.payload
+        } else {
+          return expense
+        }
+      })
+        return {...state, expenses}
 
     case DELETE_EXPENSE:
     expenses = [...state.expenses].filter(expense => {

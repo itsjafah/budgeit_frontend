@@ -50,7 +50,7 @@ class ExpenseAdd extends Component {
 
           <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
           <input type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
-          <input type="text" name="amount" onChange={this.handleChange} value={this.state.amount}></input>
+          <input type="number" step="0.01" min="0" onChange={this.handleChange} value={this.state.amount}></input>
 
           <button> Save </button>
 

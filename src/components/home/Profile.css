@@ -1,29 +1,59 @@
 #profile_container {
-  border: 1px black solid;
+  border: 2px black solid;
   position: relative;
   display: flex;
   height: 100%;
-  width: 80%;
+  width: 70%;
   margin: auto;
+  background-color: white;
 }
 
 #user_container {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 25%;
   height: 100%;
   display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 #profile_graph_container {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   width: 50%;
   height: 100%;
   display: inline-block;
   margin-left: 25%;
 }
 
-#profile_picture_container {
+#profile_graph{
+  /* border: 1px black solid; */
+}
+
+#profile_graph_chart_container {
+  /* border: 1px black solid; */
+}
+
+#profile_chart_title {
+  /* border: 1px black solid; */
+  text-align: center;
+  font-size: 30px;
+  padding-bottom: 10px;
+  padding-top: 30px;
+}
+
+#profile_chart_selector {
   border: 1px black solid;
+  height: 30px;
+  width: 90px;
+  float: right;
+  margin-right: 60px;
+  margin-top: 20px;
+}
+
+#profile_picture_container {
+  /* border: 1px black solid; */
 }
 
 #add_picture {
@@ -41,6 +71,7 @@
 
 #profile_picture {
   border: 1px black solid;
+  margin: auto;
 }
 
 #profile_information_container {
@@ -59,7 +90,7 @@
 }
 
 #profile_edit_button {
-  /* border: 1px black solid; */
+  border: 1px black solid;
   width: 30%;
   height: 25px;
   border-radius: 3px;
@@ -71,7 +102,7 @@
 
 #profile_edit_button:hover {
   color: black;
-  background-color: #6B8F71;
+  background-color: #B9F5D8;
 }
 
 #graph_container {

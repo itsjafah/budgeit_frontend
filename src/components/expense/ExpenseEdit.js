@@ -4,31 +4,30 @@ import { editExpense } from '../../actions/expense'
 
 class ExpenseEdit extends Component {
   state = {
-    categories: [],
-    category_id: '',
-    description: '',
-    date: '',
-    amount: '',
+    category_id: this.props.selectedExpense.category_id,
+    description: this.props.selectedExpense.description,
+    date: this.props.selectedExpense.date,
+    amount: this.props.selectedExpense.amount,
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedExpense !== prevProps.selectedExpense && this.props.selectedExpense) {
+      debugger
        this.setState({
-         category_id: '',
-         description: '',
-         date: '',
-         amount: '',
-      })
+         category_id: this.props.selectedExpense.category_id,
+         description: this.props.selectedExpense.description,
+         date: this.props.selectedExpense.date,
+         amount: this.props.selectedExpense.amount,
+       })
     }
   }
 
   handleChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
+    this.setState({[event.target.name]: event.target.value })
   }
 
   handleEditExpense = (event) => {
     event.preventDefault()
-
     if (this.props.selectedExpense.category_id && this.props.selectedExpense.description && this.props.selectedExpense.date && this.props.selectedExpense.amount) {
       let expense = { ...this.props.selectedExpense, ...this.state}
       this.props.editExpense(expense)
@@ -63,12 +62,12 @@ class ExpenseEdit extends Component {
             {this.selectedExpenseOptions()}
           </select>
 
-          <input type="text" name="description" onChange={this.handleChange} value={this.props.selectedExpense.description}></input>
-          <input type="date" name="date" onChange={this.handleChange} value={this.props.selectedExpense.date}></input>
-          <input type="text" name="amount" onChange={this.handleChange} value={this.props.selectedExpense.amount}></input>
+          <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
+          <input type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
+          <input type="number" name="amount" step="0.01" min="0" onChange={this.handleChange} value={this.state.amount}></input>
 
           <button> Save </button>
-          
+
         </form>
 
       </div>

@@ -56,6 +56,6 @@
 }
 
 #login_button:hover {
-  color: black;
-  background-color: #6B8F71;
+  color: grey;
+  background-color: white;
 }

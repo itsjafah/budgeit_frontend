@@ -17,7 +17,7 @@ class BudgetAdd extends Component {
   handleSubmitBudget = (event) => {
     event.preventDefault()
 
-    if (this.state.description && this.state.amount && this.state.start_date && this.state.end_date) {
+    if (this.state.description && this.state.amount && this.state.start_date && this.state.end_date && this.start_date < this.end_date) {
       let budget = { ...this.props.budgets, ...this.state}
       this.props.addBudget(budget)
       this.setState({
@@ -41,7 +41,7 @@ class BudgetAdd extends Component {
             <label> Budget Description: </label>
             <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
             <label> Budget Amount: </label>
-            <input type="text" name="amount" onChange={this.handleChange} value={this.state.amount}></input>
+            <input type="number" step="0.01" min="0" name="amount" onChange={this.handleChange} value={this.state.amount}></input>
 
             <div>
               <label> Budget Start Date: </label>

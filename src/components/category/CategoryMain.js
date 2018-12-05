@@ -65,8 +65,9 @@ class CategoryMain extends Component {
     return this.searchedCategoryTerm().map((category) => {
       return (
         <div key={category.id}>
-          <div></div>
-          <div>{category.title}</div>
+          <div style={{backgroundColor: `${category.color}`}}>
+            <div>{category.title}</div>
+          </div>
           <button onClick={()=>this.handleClickDeleteCategory(category)}> Delete </button>
         </div>
       )

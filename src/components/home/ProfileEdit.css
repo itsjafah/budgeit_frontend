@@ -1,17 +1,89 @@
 #profile_edit_container {
   border: 1px black solid;
+  position: relative;
+  display: flex;
+  height: 400px;
+  width: 265px;
+  margin: auto;
+  top: -460px;
+  left: -200px;
+  border-radius: 3px;
+  background-color: white;
 }
 
 #profile_edit_form{
-  border: 1px black solid;
-
+  /* border: 1px black solid; */
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  margin-top: 5%;
 }
 
-#profile_information_container{
-  border: 1px black solid;
+#profile_edit_information_container{
+  /* border: 1px black solid; */
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
 
+.profile_edit_form_div {
+  /* border: 1px black solid; */
+  width: 85%;
+  height: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 5%;
 }
 
 .profile_info_label{
-  border: 1px black solid;
+  /* border: 1px black solid; */
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 2px;
 }
+
+.profile_info_input {
+  border: 1px black solid;
+  width: 80%;
+  height: 20px;
+}
+
+#profile_edit_form_chckbox_div {
+  /* border: 1px black solid; */
+  position: relative;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 70%;
+}
+
+#profile_edit_show_password_label {
+  /* border: 1px black solid; */
+
+}
+
+#profile_edit_password_checkbox {
+  /* border: 1px black solid; */
+
+}
+
+#profile_edit_save_button {
+  border: 1px black solid;
+  width: 70%;
+  margin: auto;
+  display: inline-block;
+  margin-left: 6%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  height: 25px;
+  border-radius: 3px;
+  color: white;
+  background-color: grey;
+  font-size: 15px;
+}
+ #profile_edit_save_button:hover {
+   color: black;
+   background-color: #B9F5D8;
+ }
