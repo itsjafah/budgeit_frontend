@@ -42,48 +42,50 @@ class ProfileEdit extends Component {
     this.setState({showpassword: !this.state.showpassword})
   }
 
+  handleClickClose = () => {
+    document.getElementById("profile_edit_container").style.display = "none";
+  }
+
   render() {
     return (
       <React.Fragment>
-        {this.props.profileEdit
-        ?
-          <div id="profile_edit_container">
-            <form id="profile_edit_form" onSubmit={this.handleSubmitEditProfile}>
+        <div id="profile_edit_container">
+          <div>
+            <button onClick={this.handleClickClose}> X </button>
+          </div>
+          <form id="profile_edit_form" onSubmit={this.handleSubmitEditProfile}>
 
-              <div id="profile_edit_information_container">
-                <div className="profile_edit_form_div">
-                  <label className="profile_info_label"> First Name: </label>
-                  <input className="profile_info_input" type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
-                </div>
-
-                <div className="profile_edit_form_div">
-                  <label className="profile_info_label"> Last Name: </label>
-                  <input className="profile_info_input" type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
-                </div>
-
-                <div className="profile_edit_form_div">
-                  <label className="profile_info_label"> Email: </label>
-                  <input className="profile_info_input" type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
-                </div>
-
-                <div className="profile_edit_form_div">
-                  <label className="profile_info_label"> Password: </label>
-                  <input className="profile_info_input" type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
-                </div>
-
-                <div id="profile_edit_form_chckbox_div">
-                  <input id="profile_edit_password_checkbox" type="checkbox" onClick={this.onClickPassword}></input>
-                  <label id="profile_edit_show_password_label"> show password </label>
-                </div>
-
-                <button id="profile_edit_save_button"> Save </button>
+            <div id="profile_edit_information_container">
+              <div className="profile_edit_form_div">
+                <label className="profile_info_label"> First Name: </label>
+                <input className="profile_info_input" type="text" name='first_name' value={this.state.first_name ? this.state.first_name : ''} onChange={this.handleChange}></input>
               </div>
 
-            </form>
-          </div>
-        :
-        null
-        }
+              <div className="profile_edit_form_div">
+                <label className="profile_info_label"> Last Name: </label>
+                <input className="profile_info_input" type="text" name='last_name' value={this.state.last_name ? this.state.last_name : ''} onChange={this.handleChange}></input>
+              </div>
+
+              <div className="profile_edit_form_div">
+                <label className="profile_info_label"> Email: </label>
+                <input className="profile_info_input" type="text" name='email' value={this.state.email ? this.state.email : ''} onChange={this.handleChange}></input>
+              </div>
+
+              <div className="profile_edit_form_div">
+                <label className="profile_info_label"> Password: </label>
+                <input className="profile_info_input" type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
+              </div>
+
+              <div id="profile_edit_form_chckbox_div">
+                <input id="profile_edit_password_checkbox" type="checkbox" onClick={this.onClickPassword}></input>
+                <label id="profile_edit_show_password_label"> show password </label>
+              </div>
+
+              <button id="profile_edit_save_button"> Save </button>
+            </div>
+
+          </form>
+        </div>
       </React.Fragment>
     );
   }

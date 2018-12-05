@@ -1,7 +1,7 @@
 #profile_edit_container {
   border: 1px black solid;
   position: relative;
-  display: flex;
+  display: none;
   height: 400px;
   width: 265px;
   margin: auto;

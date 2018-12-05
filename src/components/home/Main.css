@@ -29,7 +29,7 @@
   height: 150px;
   transform: skew(-40deg);
   background: #B9F5D8;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -43,14 +43,14 @@
   height: 150px;
   transform: skew(-40deg);
   background: #B9F5D8;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 0px;
   left: 0px;
   z-index: 2;
   opacity: .9;
   animation-name: move1;
-  animation-duration: 5s;
+  animation-duration: 3s;
 }
 
 @keyframes move1 {
@@ -67,7 +67,7 @@
   height: 150px;
   transform: skew(-40deg);
   background: grey;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 140px;
   left: 0px;
@@ -81,14 +81,14 @@
   height: 150px;
   transform: skew(-40deg);
   background: grey;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 140px;
   left: 0px;
   z-index: 1;
   opacity: .8;
   animation-name: move2;
-  animation-duration: 5s;
+  animation-duration: 3s;
 }
 
 @keyframes move2 {
@@ -105,7 +105,7 @@
   height: 150px;
   transform: skew(-40deg);
   background: #6B8F71;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 280px;
   left: 0px;
@@ -119,14 +119,14 @@
   height: 150px;
   transform: skew(-40deg);
   background: #6B8F71;
-  display: inline-block;
+  display: none;
   position: absolute;
   top: 280px;
   left: 0px;
   z-index: 0;
   opacity: .7;
   animation-name: move3;
-  animation-duration: 5s;
+  animation-duration: 3s;
 }
 
 @keyframes move3 {

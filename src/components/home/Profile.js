@@ -16,6 +16,10 @@ class Profile extends Component {
     if(localStorage.jwt || this.props.user.first_name) this.props.userProfile()
   }
 
+  handleClickOpen = () => {
+    document.getElementById("profile_edit_container").style.display = "block";
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -36,7 +40,7 @@ class Profile extends Component {
                   <div className="profile_info"> Password: {this.props.user.password}</div>
                 </div>
                 <div>
-                  <button id="profile_edit_button" onClick={this.props.handleClickEditProfile}> Edit </button>
+                  <button id="profile_edit_button" onClick={this.handleClickOpen}> Edit </button>
                 </div>
               </div>
             </div>

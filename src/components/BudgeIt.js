@@ -31,16 +31,7 @@ class BudgeIt extends Component {
     this.setState({signup: false, login:false})
   }
 
-  handleClickSignup = () => {
-    document.getElementById("sign_up_form_container").style.display = "block";
-    document.getElementById("login_form_container").style.display = "none";
-  }
 
-  handleClickLogin = () => {
-    document.getElementById("login_form_container").style.display = "block";
-    document.getElementById("sign_up_form_container").style.display = "none";
-
-  }
 
   handleClickHome = () => {
     this.setState({signup: false, login:false})
