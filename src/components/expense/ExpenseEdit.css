@@ -1,0 +1,40 @@
+#expenses_edit_container {
+  /* border: 1px black solid; */
+}
+
+#expense_edit_header {
+  /* border: 1px black solid; */
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+
+}
+
+#expense_edit_form{
+  /* border: 1px black solid; */
+  width: 80%;
+  display: flex;
+  margin-top: 5px;
+}
+
+.expense_edit_input {
+  border: 1px black solid;
+  width: 15%;
+  margin-right: 5px;
+  margin-left: 5px;
+  height: 18px;
+  font-size: 13px;
+}
+
+#expense_edit_button {
+  height: 23px;
+  width: 60px;
+  border-radius: 3px;
+  background-color: grey;
+  color: white
+}
+
+#expense_edit_button:hover {
+  color: black;
+  background-color: #B9F5D8;
+}

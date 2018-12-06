@@ -18,7 +18,7 @@ class BudgetAdd extends Component {
   handleSubmitBudget = (event) => {
     event.preventDefault()
 
-    if (this.state.description && this.state.amount && this.state.start_date && this.state.end_date && this.start_date < this.end_date) {
+    if (this.state.description && this.state.amount && this.state.start_date && this.state.end_date && this.state.start_date < this.state.end_date) {
       let budget = { ...this.props.budgets, ...this.state}
       this.props.addBudget(budget)
       this.setState({

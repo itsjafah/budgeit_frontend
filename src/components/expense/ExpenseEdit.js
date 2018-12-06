@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { editExpense } from '../../actions/expense'
+import './ExpenseEdit.css'
 
 class ExpenseEdit extends Component {
   state = {
@@ -52,22 +53,22 @@ class ExpenseEdit extends Component {
   render() {
     const category = this.props.categories.find(category => category.id === this.props.selectedExpense.category_id)
     return (
-      <div>
-        <div> Expense </div>
+      <div id="expenses_edit_container">
+        <div id="expense_edit_header"> Edit Expense </div>
 
-        <form onSubmit={this.handleEditExpense}>
+        <form id="expense_edit_form" onSubmit={this.handleEditExpense}>
 
-          <select name="category_id" onChange={this.handleChange} value={this.state.category_id}>
+          <select className="expense_edit_input" name="category_id" onChange={this.handleChange} value={this.state.category_id}>
             <option value="" disabled selected hidden>Category</option>
             <option value={category.id}>{category.title}</option>
             {this.selectedExpenseOptions()}
           </select>
 
-          <input type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
-          <input type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
-          <input type="number" name="amount" step="0.01" min="0" onChange={this.handleChange} value={this.state.amount}></input>
+          <input className="expense_edit_input" type="text" name="description" onChange={this.handleChange} value={this.state.description}></input>
+          <input className="expense_edit_input" type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
+          <input className="expense_edit_input" type="number" name="amount" step="0.01" min="0" onChange={this.handleChange} value={this.state.amount}></input>
 
-          <button> Save </button>
+          <button id="expense_edit_button"> Save </button>
 
         </form>
 

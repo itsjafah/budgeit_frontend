@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addExpense } from '../../actions/expense'
+import './ExpenseAdd.css'
 
 class ExpenseAdd extends Component {
   state = {
@@ -38,21 +39,21 @@ class ExpenseAdd extends Component {
 
   render() {
     return (
-      <div>
-        <div> Expense </div>
+      <div id="expenses_add_container">
+        <div id="expense_add_header"> Add Expense </div>
 
-        <form onSubmit={this.handleSubmitExpense}>
+        <form id="expense_add_form" onSubmit={this.handleSubmitExpense}>
 
-          <select name="category_id" onChange={this.handleChange} value={this.state.category_id}>
+          <select className="expense_add_input" name="category_id" onChange={this.handleChange} value={this.state.category_id}>
             <option value="" disabled selected hidden>Category</option>
             {this.props.categories.map((category) => <option key={category.id} value={category.id}>{category.title}</option>)}
           </select>
 
-          <input type="text" name="description" placeholder="Enter a description..." onChange={this.handleChange} value={this.state.description}></input>
-          <input type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
-          <input type="number" step="0.01" min="0" name="amount" placeholder="Enter an amount..." onChange={this.handleChange} value={this.state.amount}></input>
+          <input className="expense_add_input" type="text" name="description" placeholder="Enter a description..." onChange={this.handleChange} value={this.state.description}></input>
+          <input className="expense_add_input" type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
+          <input className="expense_add_input" type="number" step="0.01" min="0" name="amount" placeholder="Enter an amount..." onChange={this.handleChange} value={this.state.amount}></input>
 
-          <button> Save </button>
+          <button id="expense_add_button"> Save </button>
 
         </form>
 

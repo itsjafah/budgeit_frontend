@@ -97,10 +97,10 @@
 }
 
 .expense_button {
-  border: 1px black solid;
+  /* border: 1px black solid; */
   font-size: 13px;
   height: 20px;
-  width: 50px;
+  width: 55px;
   border-radius: 3px;
   margin-left: 3px;
   background-color: grey;
