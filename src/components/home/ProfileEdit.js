@@ -51,7 +51,7 @@ class ProfileEdit extends Component {
       <React.Fragment>
         <div id="profile_edit_container">
           <div>
-            <button onClick={this.handleClickClose}> X </button>
+            <button id="profileClose" onClick={this.handleClickClose}> X </button>
           </div>
           <form id="profile_edit_form" onSubmit={this.handleSubmitEditProfile}>
 

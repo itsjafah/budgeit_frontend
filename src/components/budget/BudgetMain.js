@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteBudget } from '../../actions/budget'
+import './BudgetMain.css'
 
 class BudgetMain extends Component {
   state = {
     sort: false,
-    search: ''
+    search: '',
+    budgetClicked: false
   }
 
   handleClickDeleteBudget = (budget) => {
@@ -60,31 +62,54 @@ class BudgetMain extends Component {
     })
   }
 
+  handleClickButtons = () => {
+    this.setState({budgetClicked: !this.state.budgetClicked})
+  }
+
   mapBudgets = () => {
     return this.searchedBudgetTerm().map((budget) => {
       return (
-        <div key={budget.id}>
-          <div> {budget.description} </div>
-          <div> {budget.start_date} - {budget.end_date} </div>
-          <div> ${budget.amount} </div>
-          <button onClick={()=>this.props.handleClickEditBudget(budget)}> Edit </button>
-          <button onClick={()=>this.handleClickDeleteBudget(budget)}> Delete </button>
+        <div className="budget_container" key={budget.id} >
+          <div className="budget_info" > {budget.description} </div>
+          <div className="budget_info" > {budget.start_date} - {budget.end_date} </div>
+          <div className="budget_info" > ${budget.amount} </div>
+          {this.state.budgetClicked
+          ?
+            <React.Fragment>
+              <button id="budget_edit_button" onClick={()=>this.props.handleClickEditBudget(budget)}> Edit </button>
+              <button id="budget_delete_button" onClick={()=>this.handleClickDeleteBudget(budget)}> Delete </button>
+            </React.Fragment>
+          :
+            null
+          }
         </div>
       )
     })
   }
 
+  handleClickShowForm = () => {
+    document.getElementById("budget_add_container").style.display = "block"
+    document.getElementById("budget_edit_container").style.display = "none"
+
+  }
+
   render() {
     return (
-      <div>
-
-        <div>
-          <button onClick={this.handleClickBudgetSort}> Sort </button>
-          <button> Add </button>
-          <input type="text" placeholder="Search" onChange={this.handleChangeBudgetSearch}></input>
+      <div id="budgets_container">
+        <div id="budget_header"> My Budgets </div>
+        <div id="budget_handler">
+          <button id="sort_button" onClick={this.handleClickBudgetSort}> Sort </button>
+          <button id="add_button" onClick={this.handleClickShowForm}> Add </button>
+          <input id="budget_search_input" type="text" placeholder="Search" onChange={this.handleChangeBudgetSearch}></input>
         </div>
 
-        <div>
+        <div id="budgets">
+          <div id="budget_label_container">
+            <div className="budget_label"> Description </div>
+            <div className="budget_label"> Date Range </div>
+            <div className="budget_label"> Amount </div>
+            <button id="budget_label_button" onClick={this.handleClickButtons}> Edit/Delete </button>
+          </div>
           {this.mapBudgets()}
         </div>
 

@@ -1,17 +1,20 @@
 #sign_up_form_container {
-  /* border: 1px black solid; */
+  border: 2px black solid;
   display: inline-block;
   position: absolute;
-  top: 200px;
-  left: 1200px;
+  top: 250px;
+  left: 1550px;
   z-index: 5;
   padding: .5%;
   color: black;
-  display: none
+  display: none;
+  border-radius: 5px;
+  box-shadow: 10px 5px 5px grey;
+  background-color: white;
 }
 
 #sign_up_form {
-  border: 2px black solid;
+  /* border: 1px black solid; */
   display: inline-block;
   width: 100%;
   border-radius: 5px;
@@ -68,4 +71,11 @@
 #sign_up_button:hover {
   color: grey;
   background-color: white;
+}
+
+#signup_close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  float: right;
 }

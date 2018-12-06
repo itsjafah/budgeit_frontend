@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2'
+import DoughnutChartMaker from './DoughnutChartMaker'
 
-const DoughnutChart = () => {
-
-  const data = {
-  	labels: ['Red', 'Blue', 'Yellow'],
-  	datasets: [{
-  		data: [700, 50, 100],
-  		backgroundColor: [
-  		'#FF6384',
-  		'#36A2EB',
-  		'#FFCE56'
-  		],
-  		hoverBackgroundColor: [
-  		'#FF6384',
-  		'#36A2EB',
-  		'#FFCE56'
-  		]
-  	}]
-  };
-
-  return (
-    <div>
-      <Doughnut data={data} />
-    </div>
-  )
+class DoughnutChart extends Component {
+  render() {
+    const budgetCategories = (budget) => {
+      let cats = this.props.categories.filter((category) => {
+        return category.budget_id === budget.id
+      })
+      return cats
+    }
+    return (
+      <div>
+        {
+          this.props.budgets.length > 0 && this.props.expenses.length > 0
+          ?
+            this.props.budgets.map(budget => <DoughnutChartMaker categories={budgetCategories(budget)} budgetAmt={budget.amount} expenses={this.props.expenses} />)
+          :
+            null
+        }
+      </div>
+    )
+  }
 }
 
-export default DoughnutChart
+const mapStateToProps = state => {
+  return {
+    budgets: state.budgetReducer.budgets,
+    categories: state.categoryReducer.categories,
+    expenses: state.expenseReducer.expenses
+  }
+}
+
+export default connect(mapStateToProps)(DoughnutChart)

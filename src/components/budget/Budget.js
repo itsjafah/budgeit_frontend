@@ -11,8 +11,10 @@ class Budget extends Component {
 
   handleClickEditBudget = (budget) => {
     this.setState({selectedBudget: budget})
+    document.getElementById("budget_edit_container").style.display = "block"
+    document.getElementById("budget_add_container").style.display = "none"
   }
-
+  
   render() {
     return (
       <React.Fragment>

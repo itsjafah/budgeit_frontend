@@ -40,7 +40,7 @@ class SignUp extends Component {
         <div id="sign_up_form_container">
 
           <div>
-            <button onClick={this.handleCloseButton}> X </button>
+            <button id="signup_close" onClick={this.handleCloseButton }> X </button>
           </div>
 
           <form id="sign_up_form" onSubmit={this.handleSubmitSignup}>

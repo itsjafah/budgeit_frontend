@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { addBudget } from '../../actions/budget'
+import './BudgetAdd.css'
 
 class BudgetAdd extends Component {
   state = {
@@ -21,7 +22,6 @@ class BudgetAdd extends Component {
       let budget = { ...this.props.budgets, ...this.state}
       this.props.addBudget(budget)
       this.setState({
-        description: '',
         amount: '',
         start_date: '',
         end_date: ''
@@ -31,36 +31,32 @@ class BudgetAdd extends Component {
     }
   }
 
+  handleClickBudgetAddClose = () => {
+    document.getElementById("budget_add_container").style.display = "none"
+  }
+
   render() {
     return (
-      <div>
-
-        <form onSubmit={this.handleSubmitBudget}>
-
-          <div>
-            <label> Budget Description: </label>
-            <input type="text" name="description" placeholder="Enter a description..." Change={this.handleChange} value={this.state.description}></input>
-            <label> Budget Amount: </label>
-            <input type="number" step="0.01" min="0" name="amount" placeholder="Enter an amount..." onChange={this.handleChange} value={this.state.amount}></input>
-
-            <div>
-              <label> Budget Start Date: </label>
-              <input type="date" name="start_date" onChange={this.handleChange} value={this.state.start_date}></input>
-              <label> Budget End Date </label>
-              <input type="date" name="end_date" onChange={this.handleChange} value={this.state.end_date}></input>
+      <React.Fragment>
+        <div id="budget_add_container">
+          <button id="budget_add_close" onClick={this.handleClickBudgetAddClose}> X </button>
+          <form id="budget_add_form" onSubmit={this.handleSubmitBudget}>
+            <div id="budget_add_body">
+              <label className="budget_add_label"> Budget Description: </label>
+              <input className="budget_add_input" type="text" name="description" placeholder="Enter a description..." onChange={this.handleChange} value={this.state.description}></input>
+              <label className="budget_add_label"> Budget Amount: </label>
+              <input className="budget_add_input" type="number" step="0.01" min="0" name="amount" placeholder="Enter an amount..." onChange={this.handleChange} value={this.state.amount}></input>
+              <label className="budget_add_label"> Budget Start Date: </label>
+              <input className="budget_add_input" type="date" name="start_date" onChange={this.handleChange} value={this.state.start_date}></input>
+              <label className="budget_add_label"> Budget End Date: </label>
+              <input className="budget_add_input" type="date" name="end_date" onChange={this.handleChange} value={this.state.end_date}></input>
             </div>
-
-          </div>
-
-          <div>
-
-            <button> Save </button>
-
-          </div>
-
-        </form>
-
-      </div>
+            <div id="budget_add_button_container">
+              <button id="budget_add_button"> Save </button>
+            </div>
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

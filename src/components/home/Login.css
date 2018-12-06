@@ -1,17 +1,20 @@
 #login_form_container {
-  /* border: 1px black solid; */
+  border: 2px black solid;
   display: inline-block;
   position: absolute;
-  top: 200px;
-  left: 1200px;
+  top: 250px;
+  left: 1550px;
   z-index: 5;
   padding: .7%;
   color: black;
-  display: none;
+  border-radius: 5px;
+  /* display: none; */
+  box-shadow: 10px 5px 5px grey;
+  background-color: white;
 }
 
 #login_form {
-  border: 2px black solid;
+  /* border: 1px black solid; */
   display: inline-block;
   width: 100%;
   border-radius: 5px;
@@ -59,4 +62,11 @@
 #login_button:hover {
   color: grey;
   background-color: white;
+}
+
+#login_close {
+  border: none;
+  background: none;
+  font-size: 20px;
+  float: right;
 }

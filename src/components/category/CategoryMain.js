@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteCategory } from '../../actions/category'
+import './CategoryMain.css'
 
 class CategoryMain extends Component {
   state = {
@@ -64,11 +65,11 @@ class CategoryMain extends Component {
   mapCategories = () => {
     return this.searchedCategoryTerm().map((category) => {
       return (
-        <div key={category.id}>
-          <div style={{backgroundColor: `${category.color}`}}>
+        <div id="category_container_div" key={category.id}>
+          <div id="category" style={{backgroundColor: `${category.color}`}}>
             <div>{category.title}</div>
+            <button id="category_delete_button" onClick={()=>this.handleClickDeleteCategory(category)}> X </button>
           </div>
-          <button onClick={()=>this.handleClickDeleteCategory(category)}> Delete </button>
         </div>
       )
     })
@@ -76,15 +77,18 @@ class CategoryMain extends Component {
 
   render() {
     return (
-      <div>
-
-        <div>
-          <button onClick={this.handleClickCategorySort}> Sort </button>
-          <button> Add </button>
-          <input type="text" placeholder="Search" onChange={this.handleChangeCategorySearch}></input>
+      <div id="categories_container">
+        <div id="categories_header"> My Categories </div >
+        <div id="categories_handler">
+          <button id="category_sort_button" onClick={this.handleClickCategorySort}> Sort </button>
+          <input id="category_search" type="text" placeholder="Search" onChange={this.handleChangeCategorySearch}></input>
         </div>
 
-        {this.mapCategories()}
+        <div id="category_container">
+          <div id="category_container2">
+            {this.mapCategories()}
+          </div>
+        </div>
 
       </div>
     );

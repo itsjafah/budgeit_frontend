@@ -38,7 +38,7 @@ class Login extends Component {
         <div id="login_form_container">
 
           <div>
-            <button onClick={this.handleCloseButton}> X </button>
+            <button onClick={this.handleCloseButton} id="login_close"> X </button>
           </div>
 
           <form id="login_form" onSubmit={this.handleSubmitLogin}>

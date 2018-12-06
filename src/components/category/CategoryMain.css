@@ -1,0 +1,101 @@
+#categories_container {
+  /* border: 1px black solid; */
+  position: relative;
+  width: 100%;
+  overflow: scroll;
+}
+
+#categories_header {
+  /* border: 1px black solid; */
+  font-size: 25px;
+  text-align: center;
+  text-decoration: underline;
+  color: #6B8F71;
+}
+
+#categories_handler {
+  /* border: 1px black solid; */
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 5px;
+}
+
+#category_sort_button {
+  border: 1px black solid;
+  height: 25px;
+  width: 90px;
+  border-radius: 3px;
+  font-size: 15px;
+  margin-left: 10px;
+  color: white;
+  background-color: grey;
+}
+
+#category_sort_button:hover {
+  color: black;
+  background-color: #B9F5D8;
+}
+
+#category_search {
+  border: 1px black solid;
+  float: right;
+  margin-right: 10px;
+  width: 300px;
+  height: 23px;
+  border-radius: 3px;
+  font-size: 15px;
+}
+
+#category_container {
+  /* border: 1px black solid; */
+}
+
+#category_container2 {
+  border-right: 1px grey solid;
+  border-left: 1px grey solid;
+  position: relative;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  height: 700px;
+  width: 90%;
+  margin-left: 5%;
+}
+
+#category_container_div {
+  height: 159px;
+  width: 159px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#category {
+  /* border: 1px black solid; */
+  height: 100%;
+  width: 100%;
+  opacity: .8;
+  font-size: 30px;
+  text-align: center;
+  overflow: scroll;
+}
+
+#category:hover {
+  border: 1px black solid;
+  box-shadow: 15px 10px 10px black;
+}
+
+#category_delete_button {
+  /* border: 1px black solid; */
+  margin-top: 80px;
+  height: 25px;
+  width: 80px;
+  border: none;
+  font-size: 20px;
+  background-color: transparent;
+}
+
+#category_delete_button:hover {
+  font-size: 30px;
+}

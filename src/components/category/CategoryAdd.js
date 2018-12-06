@@ -54,32 +54,39 @@ class CategoryAdd extends Component {
 
   render() {
     return (
-      <div>
-
-        <form onSubmit={this.handleSubmitCategory}>
+      <div id="category_add_container">
+        <div id="category_add_header"> Add A Category </div>
+        <form id="category_form" onSubmit={this.handleSubmitCategory}>
           <div>
+            <div id="category_add">
+              <div id="category_add_budget">
+                <label className="category_add_label"> Budget: </label>
+                <select id="category_dropdown" name="budget_id" onChange={this.handleChange} value={this.state.budget_id}>
+                  <option value="" disabled selected hidden>Select a budget...</option>
+                  {this.selectBudgetOptions()}
+                </select>
+              </div>
 
-            <label> Budget: </label>
-            <select name="budget_id" onChange={this.handleChange} value={this.state.budget_id}>
-              <option value="" disabled selected hidden>Select a budget...</option>
-              {this.selectBudgetOptions()}
-            </select>
-
-            <label> Description: </label>
-            <input type="text" name="title" placeholder="Enter a description..." Change={this.handleChange} value={this.state.title}></input>
-
-            <div>
-              Colors:
-            </div>
-            <div id="color_container">
-
-              {COLORS.map((color,idx) => {
-                return <div className="color" key={idx} style={{backgroundColor: `${color}`}} onClick={()=>this.handleClickColor(idx)}></div>
-              })}
+              <div id="category_add_budget_description">
+                <label className="category_add_label"> Description: </label>
+                <input id="category_add_input" type="text" name="title" placeholder="Enter a description..." onChange={this.handleChange} value={this.state.title}></input>
+              </div>
             </div>
 
-            <div>
-              <button> Save </button>
+            <div id="category_color_container">
+              <div id="colors">
+                Colors:
+              </div>
+              <div id="color_container">
+
+                {COLORS.map((color,idx) => {
+                  return <div className="color" key={idx} style={{backgroundColor: `${color}`}} onClick={()=>this.handleClickColor(idx)}></div>
+                })}
+              </div>
+            </div>
+
+            <div id="category_save_container">
+              <button id="category_save_button"> Save </button>
             </div>
 
           </div>

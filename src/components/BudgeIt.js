@@ -31,8 +31,6 @@ class BudgeIt extends Component {
     this.setState({signup: false, login:false})
   }
 
-
-
   handleClickHome = () => {
     this.setState({signup: false, login:false})
   }

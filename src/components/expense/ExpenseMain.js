@@ -166,7 +166,7 @@ class ExpenseMain extends Component {
   render() {
     return (
       <div>
-
+        <h1> My Expenses </h1>
         <div>
           <select>
             <option> Week </option>
