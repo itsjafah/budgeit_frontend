@@ -43,9 +43,9 @@ const DoughnutChartMaker = (props) => {
     data.datasets[0].data = props.categories.map(cat => {
       let expenses = props.expenses.filter(e => e.category_id === cat.id)
       expenses = expenses.map(exp => exp.amount)
-      return expenses ? expenses.reduce((acc, val) => (acc + val)) : 0
+      return expenses ? expenses.reduce((acc, val) => (acc + val), 0) : 0
     })
-    data.datasets[0].data.push((props.budgetAmt - data.datasets[0].data.reduce((acc, val) => (acc + val)) ))
+    data.datasets[0].data.push((props.budgetAmt - data.datasets[0].data.reduce((acc, val) => (acc + val), 0) ))
     let arr = []
     for (let i=0; i < props.categories.length; i++) {
       arr.push('#B9F5D8')

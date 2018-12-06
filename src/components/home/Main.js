@@ -9,15 +9,15 @@ class Main extends Component {
     document.getElementById("parallelogram_3").style.display = "block";
 
     setTimeout(function() {
-      document.getElementById("parallelogram_1").style.display = "none";
-      document.getElementById("parallelogram_2").style.display = "none";
-      document.getElementById("parallelogram_3").style.display = "none";
+      // document.getElementById("parallelogram_1").style.display = "none";
+      // document.getElementById("parallelogram_2").style.display = "none";
+      // document.getElementById("parallelogram_3").style.display = "none";
     }.bind(this), 4000)
 
     setTimeout(function() {
-      document.getElementById("parallelogram1").style.display = "block";
-      document.getElementById("parallelogram2").style.display = "block";
-      document.getElementById("parallelogram3").style.display = "block";
+      // document.getElementById("parallelogram1").style.display = "block";
+      // document.getElementById("parallelogram2").style.display = "block";
+      // document.getElementById("parallelogram3").style.display = "block";
     }.bind(this), 4000)
   }
 
