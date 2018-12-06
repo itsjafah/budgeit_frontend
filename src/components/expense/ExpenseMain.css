@@ -1,36 +1,114 @@
+#expenses_container {
+  /* border: 1px black solid; */
+  width: 100%;
+  height: 1000px;
+}
+
+#expense_header {
+  /* border: 1px black solid; */
+  position: relative;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 25px;
+  padding-top: 15px;
+  color: #6B8F71;
+  margin-bottom: 5px;
+}
+
+#expenses_table_container {
+  /* border: 1px black solid; */
+  width: 100%;
+  height: 900px;
+  overflow:scroll;
+}
+
+#expense_table {
+  /* border: 1px pink solid; */
+  width: 100%;
+  border-right: 2px grey solid;
+  border-left: 2px grey solid;
+}
+
+#table_body {
+  /* border: 1px black solid; */
+  width: 100%;
+
+}
+
+#table_data {
+  border-top: 2px black solid;
+  border-bottom: 2px black solid;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  width: 99%;
+  height: 350px;
+  overflow: scroll;
+}
+
 #budget_table_row {
+  /* border: 1px black solid; */
   text-align: left;
 }
 
 .budget_table_headers {
+  /* border: 1px black solid; */
   text-align: left;
-  width: 600px;
+  width: 500px;
+  height: 20px;
+  margin: auto;
+  font-size: 20px;
 }
 
 #category_table_row {
+  /* border: 1px black solid; */
   text-align: left;
 }
 
 .category_table_headers {
-  text-align: left;
+  /* border: 1px red solid; */
+  text-align: center;
+  width: 1500px;
+  opacity: .7;
+  font-size: 20px;
 }
 
 #expense_table_label_row {
-  width: 300px;
+  /* border: 1px black solid; */
   text-align: left;
 }
 
 .expense_table_headers {
-  width: 300px;
+  /* border: 1px black solid; */
+  width: 500px;
   text-align: left;
 }
 
 #expense_table_row {
-  width: 300px;
+  /* border: 1px black solid; */
   text-align: left;
 }
 
 .expense_table_data {
-  width: 300px;
+  /* border: 1px black solid; */
+  width: 500px;
   text-align: left;
+  padding-left: 20px;
+}
+
+.expense_button {
+  border: 1px black solid;
+  font-size: 13px;
+  height: 20px;
+  width: 50px;
+  border-radius: 3px;
+  margin-left: 3px;
+  background-color: grey;
+  border-radius: 3px;
+  color: white;
+}
+
+.expense_button:hover {
+  color: black;
+  background-color: #B9F5D8;
 }

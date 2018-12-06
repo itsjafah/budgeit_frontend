@@ -86,8 +86,6 @@ class Navbar extends Component {
             <div className='navoption'><NavLink to='/budgets' className='navlink'> Budget </NavLink></div>
             <div className='navoption'><NavLink to='/categories' className='navlink'> Category </NavLink></div>
             <div className='navoption'><NavLink to='/expenses' className='navlink'> Expense </NavLink></div>
-            <div className='navoption'><NavLink to='/weekmonth' className='navlink'> Week/Month </NavLink></div>
-            <div className='navoption'><NavLink to='/year' className='navlink'> Year </NavLink></div>
             <div className='navoption' onClick={this.props.handleClickLogout}> <NavLink to='/home' className='navlink'> Logout </NavLink> </div>
           </div>
         </React.Fragment>

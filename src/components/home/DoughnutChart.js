@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Doughnut } from 'react-chartjs-2'
 import DoughnutChartMaker from './DoughnutChartMaker'
+import './DoughnutChart.css'
 
 class DoughnutChart extends Component {
   render() {
@@ -12,7 +13,7 @@ class DoughnutChart extends Component {
       return cats
     }
     return (
-      <div>
+      <div id="graph_container2">
         {
           this.props.budgets.length > 0 && this.props.expenses.length > 0
           ?

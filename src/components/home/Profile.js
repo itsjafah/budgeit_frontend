@@ -48,13 +48,9 @@ class Profile extends Component {
             <div id="profile_graph_container">
               <div id="profile_graph">
                 <div id="profile_graph_chart_container">
-                  <div id="profile_chart_title"> Expenses by Category </div>
-                  <select id="profile_chart_selector">
-                    <option> Week </option>
-                    <option> Month </option>
-                  </select>
+                  <div id="profile_chart_title"> My Budgets </div>
                 </div>
-                <div>
+                <div id="graph_container">
                   <DoughnutChart />
                 </div>
               </div>

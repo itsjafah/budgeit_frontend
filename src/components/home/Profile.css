@@ -22,7 +22,7 @@
 #profile_graph_container {
   /* border: 1px black solid; */
   width: 50%;
-  height: 100%;
+  height: 1000px;
   display: inline-block;
   margin-left: 25%;
 }
@@ -41,15 +41,6 @@
   font-size: 30px;
   padding-bottom: 10px;
   padding-top: 30px;
-}
-
-#profile_chart_selector {
-  border: 1px black solid;
-  height: 30px;
-  width: 90px;
-  float: right;
-  margin-right: 60px;
-  margin-top: 20px;
 }
 
 #profile_picture_container {
@@ -106,11 +97,11 @@
 }
 
 #graph_container {
+  margin-right: 3px;
+  height: 800px;
   /* border: 1px black solid; */
-}
-
-#graph_select_option {
-  /* border: 1px black solid; */
+  border-right: 2px grey solid;
+  border-left: 2px grey solid;
 }
 
 #profile_graph {

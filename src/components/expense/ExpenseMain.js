@@ -116,23 +116,24 @@ class ExpenseMain extends Component {
   mapBudgets = () => {
     return this.props.budgets.map(budget => {
       let categoryBudgets = this.props.categories.filter(category => budget.id === category.budget_id)
-      return <div>
+      return <div id="table_data">
         <tr id="budget_table_row">
           <th className="budget_table_headers"> Budget: {budget.description}</th>
           <th className="budget_table_headers"> Budget Total: ${budget.amount}</th>
-          <th className="budget_table_headers"> Budget Remaining: $-{budget.amount}</th>
         </tr>
         {categoryBudgets.map(category => {
           let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
           return <div>
             <tr id="category_table_row">
-              <th className="category_table_headers"> {category.title} <button> Sort </button></th>
+              <th className="category_table_headers" style={{backgroundColor: `${category.color}`}}> {category.title}</th>
             </tr>
             <tr id="expense_table_label_row">
-              <th className="expense_table_headers"> Expense Description <button onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
-              <th className="expense_table_headers"> Expense Dates <button onClick={this.handleClickExpenseDateSort}> Sort </button></th>
-              <th className="expense_table_headers"> Expense Amount <button onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
-              <th className="expense_table_headers"> Edit/Delete </th>
+              <div>
+                <th className="expense_table_headers"> Expense Description <button className="expense_button" onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
+                <th className="expense_table_headers"> Expense Dates <button className="expense_button" onClick={this.handleClickExpenseDateSort}> Sort </button></th>
+                <th className="expense_table_headers"> Expense Amount <button className="expense_button" onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
+                <th className="expense_table_headers"> Edit/Delete </th>
+              </div>
             </tr>
             {categoryExpenses.map(expense => {
               let beforeDecimal = parseFloat(expense.amount.toString().split(".")[0]);
@@ -151,8 +152,8 @@ class ExpenseMain extends Component {
                   <td className="expense_table_data">{expense.date}</td>
                   <td className="expense_table_data">${parsedExpenseAmount}</td>
                   <td className="expense_table_data">
-                    <button id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
-                    <button id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
+                    <button className="expense_button" id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
+                    <button className="expense_button" id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
                   </td>
                 </tr>
               </div>
@@ -165,18 +166,12 @@ class ExpenseMain extends Component {
 
   render() {
     return (
-      <div>
-        <h1> My Expenses </h1>
-        <div>
-          <select>
-            <option> Week </option>
-            <option> Month </option>
-          </select>
-        </div>
+      <div id="expenses_container">
+        <div id="expense_header"> My Expenses </div>
 
-        <div>
-          <table>
-            <tbody>
+        <div id="expenses_table_container">
+          <table id="expense_table">
+            <tbody id="table_body">
 
               {this.mapBudgets()}
 
