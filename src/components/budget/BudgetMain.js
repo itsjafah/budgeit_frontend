@@ -102,7 +102,6 @@ class BudgetMain extends Component {
           <button id="add_button" onClick={this.handleClickShowForm}> Add </button>
           <input id="budget_search_input" type="text" placeholder="Search" onChange={this.handleChangeBudgetSearch}></input>
         </div>
-
         <div id="budgets">
           <div id="budget_label_container">
             <div className="budget_label"> Description </div>
@@ -112,7 +111,6 @@ class BudgetMain extends Component {
           </div>
           {this.mapBudgets()}
         </div>
-
       </div>
     );
   }

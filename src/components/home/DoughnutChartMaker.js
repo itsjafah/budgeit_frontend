@@ -21,7 +21,7 @@ const DoughnutChartMaker = (props) => {
   if (props.categories.length === 0) {
     return <div></div>
   } else {
-    console.log(props)
+    // console.log(props)
     let data = {
       labels: ['Pink', 'Blue', 'Yellow'],
       datasets: [{

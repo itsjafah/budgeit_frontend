@@ -3,5 +3,9 @@ body {
   height: 100vh;
   /* font-family: 'Nanum Gothic', sans-serif; */
   font-family: 'Quicksand', sans-serif;
-  background-color: lightgrey
+  /* background-color: lightgrey */
+}
+
+html {
+  /* overflow: hidden; */
 }

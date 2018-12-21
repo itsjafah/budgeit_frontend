@@ -3,24 +3,6 @@ import './Main.css'
 
 class Main extends Component {
 
-  componentDidMount() {
-    document.getElementById("parallelogram_1").style.display = "block";
-    document.getElementById("parallelogram_2").style.display = "block";
-    document.getElementById("parallelogram_3").style.display = "block";
-
-    setTimeout(function() {
-      // document.getElementById("parallelogram_1").style.display = "none";
-      // document.getElementById("parallelogram_2").style.display = "none";
-      // document.getElementById("parallelogram_3").style.display = "none";
-    }.bind(this), 4000)
-
-    setTimeout(function() {
-      // document.getElementById("parallelogram1").style.display = "block";
-      // document.getElementById("parallelogram2").style.display = "block";
-      // document.getElementById("parallelogram3").style.display = "block";
-    }.bind(this), 4000)
-  }
-
   handleClickSignup = () => {
     document.getElementById("sign_up_form_container").style.display = "block";
     document.getElementById("login_form_container").style.display = "none";
@@ -34,23 +16,27 @@ class Main extends Component {
   render() {
     return (
       <React.Fragment>
-        <img id="image" src="https://blogmedia.evbstatic.com/wp-content/uploads/wpmulti/sites/3/2018/09/07082544/iStock-682144388.jpg" />
         <div id="main_container">
-          <div id="parallelogram_container">
-            <div id="parallelogram_1"></div>
-            <div id="parallelogram_2"></div>
-            <div id="parallelogram_3"></div>
-
-            <div id="parallelogram1"></div>
-            <div id="parallelogram2"></div>
-            <div id="parallelogram3"></div>
-          </div>
           <div id="container">
             <div id="button_container">
-              <button className="user_button" onClick={this.handleClickSignup}> Sign Up </button>
-              <button className="user_button" onClick={this.handleClickLogin}> Log In </button>
+              <button className="user_button" onClick={this.handleClickSignup}>Sign Up</button>
+              <button className="user_button" onClick={this.handleClickLogin}>Log In</button>
             </div>
-            <div id="app_logo"> Fuzzy WuzzIt was a BudgIt </div>
+            <img id="image1" src="https://images.unsplash.com/photo-1459257831348-f0cdd359235f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt=""/>
+            <div id="main_image_container">
+              <div className="main_images_container">
+                <div className="image"><img className="main_image" src="https://images.unsplash.com/photo-1533094700036-70ecccc6f047?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt=""/></div>
+                <div className="main_info_container"><div className="main_info"></div><div className="main_details">SET A BUDGET</div></div>
+              </div>
+              <div className="main_images_container">
+                <div className="image"><img className="main_image" src="https://images.unsplash.com/photo-1536659622540-0b4c2331489c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt=""/></div>
+                <div className="main_info_container"><div className="main_info"></div><div className="main_details">CREATE A CATEGORY</div></div>
+              </div>
+              <div className="main_images_container">
+                <div className="image"><img className="main_image" src="https://images.unsplash.com/photo-1518458028785-8fbcd101ebb9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt=""/></div>
+                <div className="main_info_container"><div className="main_info"></div><div className="main_details">TRACK EXPENSES</div></div>
+              </div>
+            </div>
           </div>
         </div>
       </React.Fragment>
