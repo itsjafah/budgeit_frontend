@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CategoryMain from './CategoryMain'
-import CategoryAdd from './CategoryAdd'
 import { connect } from 'react-redux'
 
 class Category extends Component {
@@ -24,7 +23,6 @@ class Category extends Component {
         {!!this.props.user.first_name
         ?
           <React.Fragment>
-            <CategoryAdd />
             <CategoryMain handleClickEditCategory={this.handleClickEditCategory}/>
           </React.Fragment>
         :

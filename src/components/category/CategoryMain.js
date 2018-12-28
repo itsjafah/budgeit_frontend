@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteCategory } from '../../actions/category'
+import CategoryAdd from './CategoryAdd'
 import './CategoryMain.css'
 
 class CategoryMain extends Component {
@@ -79,6 +80,7 @@ class CategoryMain extends Component {
     return (
       <div id="categories_container">
         <div id="categories_header">My Categories</div>
+        <CategoryAdd />
         <div id="categories_handler">
           <button id="category_sort_button" onClick={this.handleClickCategorySort}>Sort</button>
           <input id="category_search" type="text" placeholder="Search..." onChange={this.handleChangeCategorySearch}></input>

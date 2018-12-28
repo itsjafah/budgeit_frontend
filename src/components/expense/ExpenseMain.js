@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteExpense } from '../../actions/expense'
+import ExpenseAdd from './ExpenseAdd'
 import './ExpenseMain.css'
 
 class ExpenseMain extends Component {
@@ -113,54 +114,58 @@ class ExpenseMain extends Component {
     })
   }
 
+  budgetList = () => {
+    return this.props.budgets.map(budget => {
+      return (
+        <div id="expense_list">
+            Budget: {budget.description}
+        </div>
+      )
+    })
+  }
+
   mapBudgets = () => {
     return this.props.budgets.map(budget => {
       let categoryBudgets = this.props.categories.filter(category => budget.id === category.budget_id)
-      return <div id="table_data">
-        <tr id="budget_table_row">
-          <th className="budget_table_headers"> Budget: {budget.description}</th>
-          <th className="budget_table_headers"> Budget Total: ${budget.amount}</th>
-        </tr>
-        {categoryBudgets.map(category => {
-          let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
-          return <div>
-            <tr id="category_table_row">
-              <th className="category_table_headers" style={{backgroundColor: `${category.color}`}}> {category.title}</th>
-            </tr>
-            <tr id="expense_table_label_row">
+      return (
+        <div id="table_data">
+          <tr id="budget_table_row">
+            <th className="budget_table_headers"> Budget: {budget.description}</th>
+            <th className="budget_table_headers"> Budget Total: ${budget.amount.toFixed(2)}</th>
+          </tr>
+          {categoryBudgets.map(category => {
+            let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
+            return (
               <div>
-                <th className="expense_table_headers"> Expense Description <button className="expense_button" onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
-                <th className="expense_table_headers"> Expense Dates <button className="expense_button" onClick={this.handleClickExpenseDateSort}> Sort </button></th>
-                <th className="expense_table_headers"> Expense Amount <button className="expense_button" onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
-                <th className="expense_table_headers"> Edit/Delete </th>
-              </div>
-            </tr>
-            {categoryExpenses.map(expense => {
-              let beforeDecimal = parseFloat(expense.amount.toString().split(".")[0]);
-              let afterDecimal = parseFloat(expense.amount.toString().split(".")[1]);
-
-              if (isNaN(afterDecimal)) {
-                afterDecimal = '00'
-              } else if (afterDecimal < 10) {
-                afterDecimal = afterDecimal.toString() + '0'
-              }
-              const parsedExpenseAmount = beforeDecimal.toString() + '.' + afterDecimal.toString()
-
-              return <div>
-                <tr key={expense.id} id="expense_table_row">
-                  <td className="expense_table_data">{expense.description}</td>
-                  <td className="expense_table_data">{expense.date}</td>
-                  <td className="expense_table_data">${expense.amount.toFixed(2)}</td>
-                  <td className="expense_table_data">
-                    <button className="expense_button" id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
-                    <button className="expense_button" id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
-                  </td>
+                <tr id="category_table_row">
+                  <th className="category_table_headers" style={{backgroundColor: `${category.color}`}}> {category.title}</th>
                 </tr>
+                <tr id="expense_table_label_row">
+                  <div>
+                    <th className="expense_table_headers"> Expense Description <button className="expense_button" onClick={this.handleClickExpenseDescriptionSort}> Sort </button></th>
+                    <th className="expense_table_headers"> Expense Dates <button className="expense_button" onClick={this.handleClickExpenseDateSort}> Sort </button></th>
+                    <th className="expense_table_headers"> Expense Amount <button className="expense_button" onClick={this.handleClickExpenseAmountSort}> Sort </button></th>
+                    <th className="expense_table_headers"> Edit/Delete </th>
+                  </div>
+                </tr>
+                {categoryExpenses.map(expense => {
+                  return <div>
+                    <tr key={expense.id} id="expense_table_row">
+                      <td className="expense_table_data">{expense.description}</td>
+                      <td className="expense_table_data">{expense.date}</td>
+                      <td className="expense_table_data">${expense.amount.toFixed(2)}</td>
+                      <td className="expense_table_data">
+                        <button className="expense_button" id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
+                        <button className="expense_button" id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>
+                      </td>
+                    </tr>
+                  </div>
+                })}
               </div>
-            })}
-          </div>
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )
     })
   }
 
@@ -168,17 +173,17 @@ class ExpenseMain extends Component {
     return (
       <div id="expenses_container">
         <div id="expense_header"> My Expenses </div>
-
+        <ExpenseAdd />
         <div id="expenses_table_container">
+          <div id="expense_list_container">
+            {this.budgetList()}
+          </div>
           <table id="expense_table">
             <tbody id="table_body">
-
               {this.mapBudgets()}
-
             </tbody>
           </table>
         </div>
-
       </div>
     );
   }

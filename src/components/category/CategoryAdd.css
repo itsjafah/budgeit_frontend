@@ -1,7 +1,7 @@
 #category_add_container{
   /* border: 1px black solid; */
   margin-top: 2vh;
-  height: 15vh;
+  height: 17vh;
 }
 
 #category_add_header{
@@ -10,13 +10,13 @@
   text-align: center;
   font-size: 4vh;
   color: #3dd4e5;
-  margin-bottom: 1vh;
+  margin-top: 4vh;
 }
 
 #category_form{
   /* border: 1px black solid; */
   display: flex;
-  height: 50%;
+  height: 45%;
   width: 98%;
   margin: auto;
 }
