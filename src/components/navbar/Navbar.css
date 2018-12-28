@@ -49,6 +49,7 @@
 
 #navlink_container{
   border: 2px #3dd4e5 solid;
+  z-index: 999;
   border-radius: 5px;
   position: fixed;
   background-color: white;

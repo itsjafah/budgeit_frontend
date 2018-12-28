@@ -17,7 +17,7 @@ class DoughnutChart extends Component {
         {
           this.props.budgets.length > 0 && this.props.expenses.length > 0
           ?
-            this.props.budgets.map(budget => <DoughnutChartMaker categories={budgetCategories(budget)} budgetAmt={budget.amount} expenses={this.props.expenses} />)
+            this.props.budgets.map(budget => <DoughnutChartMaker key={budget.id} categories={budgetCategories(budget)} budgetAmt={budget.amount} expenses={this.props.expenses} />)
           :
             null
         }

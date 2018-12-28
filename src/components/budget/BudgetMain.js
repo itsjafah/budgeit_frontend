@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { deleteBudget } from '../../actions/budget'
+import BudgetAdd from './BudgetAdd'
+import BudgetEdit from './BudgetEdit'
 import './BudgetMain.css'
 
 class BudgetMain extends Component {
   state = {
     sort: false,
     search: '',
-    budgetClicked: false
+    budget: null,
+    budgetSelected: false,
+    selectedBudget: ''
+  }
+
+  handleClickEditBudget = (budget) => {
+    this.setState({selectedBudget: budget})
+    document.getElementById("budget_edit_container").style.display = "block"
+    document.getElementById("budget_add_container").style.display = "none"
   }
 
   handleClickDeleteBudget = (budget) => {
@@ -62,22 +72,24 @@ class BudgetMain extends Component {
     })
   }
 
-  handleClickButtons = () => {
-    this.setState({budgetClicked: !this.state.budgetClicked})
+  handleClickBudgetSelected = (budget) => {
+    this.setState({budget: budget, budgetSelected: !this.state.budgetSelected})
   }
 
   mapBudgets = () => {
     return this.searchedBudgetTerm().map((budget) => {
       return (
-        <div className="budget_container" key={budget.id} >
-          <div className="budget_info" > {budget.description} </div>
-          <div className="budget_info" > {budget.start_date} - {budget.end_date} </div>
-          <div className="budget_info" > ${budget.amount} </div>
-          {this.state.budgetClicked
+        <div className="budget_container" key={budget.id} onClick={()=>this.handleClickBudgetSelected(budget)}>
+          <div className="budget_info" >{budget.description}</div>
+          <div className="budget_info">{budget.start_date} - {budget.end_date}</div>
+          <div className="budget_info">${budget.amount.toFixed(2)}</div>
+          {this.state.budget === budget && this.state.budgetSelected
           ?
             <React.Fragment>
-              <button id="budget_edit_button" onClick={()=>this.props.handleClickEditBudget(budget)}> Edit </button>
-              <button id="budget_delete_button" onClick={()=>this.handleClickDeleteBudget(budget)}> Delete </button>
+              <div id="budget_label_button">
+                <button className="budget_button" onClick={()=>this.handleClickEditBudget(budget)}>Edit</button>
+                <button className="budget_button" onClick={()=>this.handleClickDeleteBudget(budget)}>Delete</button>
+              </div>
             </React.Fragment>
           :
             null
@@ -90,26 +102,29 @@ class BudgetMain extends Component {
   handleClickShowForm = () => {
     document.getElementById("budget_add_container").style.display = "block"
     document.getElementById("budget_edit_container").style.display = "none"
-
   }
 
   render() {
     return (
       <div id="budgets_container">
-        <div id="budget_header"> My Budgets </div>
+        <div id="budget_header">My Budgets</div>
+        <BudgetAdd />
+        <BudgetEdit selectedBudget={this.state.selectedBudget}/>
         <div id="budget_handler">
-          <button id="sort_button" onClick={this.handleClickBudgetSort}> Sort </button>
-          <button id="add_button" onClick={this.handleClickShowForm}> Add </button>
-          <input id="budget_search_input" type="text" placeholder="Search" onChange={this.handleChangeBudgetSearch}></input>
+          <button id="sort_button" onClick={this.handleClickBudgetSort}>Sort</button>
+          <button id="add_button" onClick={this.handleClickShowForm}>Add</button>
+          <div id="budget_search_input_container"><input id="budget_search_input" type="text" placeholder="Search..." onChange={this.handleChangeBudgetSearch}></input></div>
         </div>
         <div id="budgets">
           <div id="budget_label_container">
-            <div className="budget_label"> Description </div>
-            <div className="budget_label"> Date Range </div>
-            <div className="budget_label"> Amount </div>
-            <button id="budget_label_button" onClick={this.handleClickButtons}> Edit/Delete </button>
+            <div className="budget_label">Description</div>
+            <div className="budget_label">Date Range</div>
+            <div className="budget_label">Amount</div>
+            <div className="budget_label">Edit/Delete</div>
           </div>
-          {this.mapBudgets()}
+          <div id="budgets_container_main">
+            {this.mapBudgets()}
+          </div>
         </div>
       </div>
     );

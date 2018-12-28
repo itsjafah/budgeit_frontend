@@ -1,28 +1,15 @@
 import React, { Component } from 'react';
 import BudgetMain from './BudgetMain'
-import BudgetAdd from './BudgetAdd'
-import BudgetEdit from './BudgetEdit'
+
 import { connect } from 'react-redux'
 
 class Budget extends Component {
-  state = {
-    selectedBudget: ''
-  }
-
-  handleClickEditBudget = (budget) => {
-    this.setState({selectedBudget: budget})
-    document.getElementById("budget_edit_container").style.display = "block"
-    document.getElementById("budget_add_container").style.display = "none"
-  }
-  
   render() {
     return (
       <React.Fragment>
         {!!this.props.user.first_name
         ?
         <React.Fragment>
-          <BudgetAdd />
-          <BudgetEdit selectedBudget={this.state.selectedBudget}/>
           <BudgetMain handleClickEditBudget={this.handleClickEditBudget} />
         </React.Fragment>
         :

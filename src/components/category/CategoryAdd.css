@@ -1,1 +1,85 @@
+#category_add_container{
+  /* border: 1px black solid; */
+  margin-top: 2vh;
+  height: 15vh;
+}
 
+#category_add_header{
+  /* border: 1px black solid; */
+  height: 40%;
+  text-align: center;
+  font-size: 4vh;
+  color: #3dd4e5;
+  margin-bottom: 1vh;
+}
+
+#category_form{
+  /* border: 1px black solid; */
+  display: flex;
+  height: 50%;
+  width: 98%;
+  margin: auto;
+}
+
+#category_add{
+  /* border: 1px black solid; */
+  display: flex;
+  width: 92%;
+}
+
+.category_info_add{
+  /* border: 1px black solid; */
+  display: flex;
+  width: 32%;
+  margin: auto;
+}
+
+.category_add_label{
+  /* border: 1px black solid; */
+  font-size: 2.5vh;
+}
+
+#category_dropdown{
+  /* border: 1px black solid; */
+  font-size: 2vh;
+  width: 85%;
+  margin-left: 1vh;
+}
+
+#category_add_input{
+  border: 1px lightgrey solid;
+  font-size: 2vh;
+  padding: .5vh;
+  margin-left: 1vh;
+  width: 75%;
+  border-radius: 3px;
+}
+
+#category_add_color{
+  border: 1px white solid;
+  height: 3.5vh;
+  margin-left: 1vh;
+  width: 60%;
+}
+
+#category_save_container{
+  /* border: 1px black solid; */
+  width: 8%;
+  height: 80%;
+  margin: auto;
+}
+
+#category_save_button{
+  border: 1px white solid;
+  font-size: 2vh;
+  background-color: #ffac47;
+  color: white;
+  border-radius: 3px;
+  height: 4vh;
+  width: 7vw;
+  margin-top: 1vh;
+}
+
+#category_save_button:hover{
+  box-shadow: 3px 3px 6px black;
+}

@@ -38,25 +38,19 @@ class SignUp extends Component {
     return (
       <React.Fragment>
         <div id="sign_up_form_container">
-
           <div id="signup_close_container">
             <button id="signup_close" onClick={this.handleCloseButton }>X</button>
           </div>
-
           <form id="sign_up_form" onSubmit={this.handleSubmitSignup}>
-
             <div className="sign_up_form_div">
               <input className="sign_up_input" placeholder="Enter first name..." type="text" name='first_name' onChange={this.handleChange}></input>
             </div>
-
             <div className="sign_up_form_div">
               <input className="sign_up_input" placeholder="Enter last name..." type="text" name='last_name' onChange={this.handleChange}></input>
             </div>
-
             <div className="sign_up_form_div">
               <input className="sign_up_input" placeholder="Enter email address..." type="text" name='email' onChange={this.handleChange}></input>
             </div>
-
             <div className="sign_up_form_div">
               <input className="sign_up_input" placeholder="Enter password..." type={this.state.showpassword ? "text" : "password"} name='password' onChange={this.handleChange}></input>
               <div id="sign_up_form_checkbox_div">
@@ -64,15 +58,11 @@ class SignUp extends Component {
                 <div id="signup_show_password_div">show password</div>
               </div>
             </div>
-
-
             <div id="sign_up_button_container">
-              <button id="sign_up_button"> Signup </button>
+              <button id="sign_up_button">Signup</button>
             </div>
-
           </form>
         </div>
-
       </React.Fragment>
     );
   }

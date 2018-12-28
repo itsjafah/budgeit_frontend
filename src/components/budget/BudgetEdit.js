@@ -41,6 +41,7 @@ class BudgetEdit extends Component {
       start_date: '',
       end_date: ''
     })
+    document.getElementById("budget_edit_container").style.display = "none"
   }
 
   handleClickEditClose = () => {
@@ -50,20 +51,24 @@ class BudgetEdit extends Component {
   render() {
     return (
       <div id="budget_edit_container">
-        <button id="budget_edit_close" onClick={this.handleClickEditClose}> X </button >
+        <button id="budget_edit_close" onClick={this.handleClickEditClose}>X</button>
         <form id="budget_edit_form" onSubmit={this.handleEditBudget}>
-          <div id="budget_edit_body">
-            <label className="budget_edit_label"> Budget Description: </label>
-            <input className="budget_edit_input" type="text" name="description" onChange={this.handleChangeEdit} value={this.state.description}></input>
-            <label className="budget_edit_label"> Budget Amount: </label>
-            <input className="budget_edit_input" type="number" step="0.01" min="0" name="amount" onChange={this.handleChangeEdit} value={this.state.amount}></input>
-            <label className="budget_edit_label"> Budget Start Date: </label>
-            <input className="budget_edit_input" type="date" name="start_date" onChange={this.handleChangeEdit} value={this.state.start_date}></input>
-            <label className="budget_edit_label"> Budget End Date </label>
-            <input className="budget_edit_input" type="date" name="end_date" onChange={this.handleChangeEdit} value={this.state.end_date}></input>
+          <div id="budget_edit_body_container">
+            <div className="budget_edit_body">
+              <label className="budget_edit_label">Budget Description:</label>
+              <input className="budget_edit_input" type="text" name="description" onChange={this.handleChangeEdit} value={this.state.description}></input>
+              <label className="budget_edit_label">Budget Amount:</label>
+              <input className="budget_edit_input" type="number" step="0.01" min="0" name="amount" onChange={this.handleChangeEdit} value={this.state.amount}></input>
+            </div>
+            <div className="budget_edit_body">
+              <label className="budget_edit_label">Budget Start Date:</label>
+              <input className="budget_edit_input_date" type="date" name="start_date" onChange={this.handleChangeEdit} value={this.state.start_date}></input>
+              <label className="budget_edit_label">Budget End Date:</label>
+              <input className="budget_edit_input_date" type="date" name="end_date" onChange={this.handleChangeEdit} value={this.state.end_date}></input>
+            </div>
           </div>
           <div id="budget_edit_button_container">
-            <button id="budget_edit_save_button"> Save </button>
+            <button id="budget_edit_save_button">Save</button>
           </div>
         </form>
       </div>

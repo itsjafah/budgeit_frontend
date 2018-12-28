@@ -28,19 +28,19 @@ class Profile extends Component {
           <div id="profile_container">
 
             <div id="user_container">
+              <div id="profile_label">My Profile</div>
               <div id="profile_picture_container">
-                <div> Add Picture </div>
                 <img id="profile_picture" src={this.props.user.image || "https://www.w3schools.com/howto/img_avatar.png"} alt="" width="275" height="300"/>
               </div>
-              <div>
+              <div id="profile_information_container">
                 <div id="profile_information">
-                  <div className="profile_info"> First Name: {this.props.user.first_name}</div>
-                  <div className="profile_info"> Last Name: {this.props.user.last_name}</div>
-                  <div className="profile_info"> Email: {this.props.user.email}</div>
-                  <div className="profile_info"> Password: {this.props.user.password}</div>
+                  <div className="profile_info">First Name: {this.props.user.first_name}</div>
+                  <div className="profile_info">Last Name: {this.props.user.last_name}</div>
+                  <div className="profile_info">Email: {this.props.user.email}</div>
+                  <div className="profile_info">Password: {this.props.user.password}</div>
                 </div>
-                <div>
-                  <button id="profile_edit_button" onClick={this.handleClickOpen}> Edit </button>
+                <div id="profile_edit_button_container">
+                  <button id="profile_edit_button" onClick={this.handleClickOpen}>Edit</button>
                 </div>
               </div>
             </div>
@@ -48,7 +48,7 @@ class Profile extends Component {
             <div id="profile_graph_container">
               <div id="profile_graph">
                 <div id="profile_graph_chart_container">
-                  <div id="profile_chart_title"> My Budgets </div>
+                  <div id="profile_chart_title">My Budgets</div>
                 </div>
                 <div id="graph_container">
                   <DoughnutChart />

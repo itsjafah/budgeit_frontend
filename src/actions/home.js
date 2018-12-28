@@ -38,20 +38,21 @@ export const login = (user, dispatch) => {
     },
     body: JSON.stringify(user)
   })
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem('jwt', data.jwt)
-      const { budgets, categories, expenses } = data.user
-      let user = {
-        first_name: data.user.first_name,
-        last_name: data.user.last_name,
-        email: data.user.email
-      }
-      dispatch({ type: LOGIN, payload: user })
-      dispatch({ type: GET_BUDGETS, payload: budgets})
-      dispatch({ type: GET_CATEGORIES, payload: categories})
-      dispatch({ type: GET_EXPENSES, payload: expenses})
-    })
+  .then(response => response.json())
+  .then(data => {
+    localStorage.setItem('jwt', data.jwt)
+    const { budgets, categories, expenses } = data.user
+    let user = {
+      first_name: data.user.first_name,
+      last_name: data.user.last_name,
+      email: data.user.email
+    }
+    dispatch({ type: LOGIN, payload: user })
+    dispatch({ type: GET_BUDGETS, payload: budgets})
+    dispatch({ type: GET_CATEGORIES, payload: categories})
+    dispatch({ type: GET_EXPENSES, payload: expenses})
+  })
+  .catch(error => window.alert("Incorrect email or password."))
 }
 
 export const userProfile = (dispatch) => {
@@ -64,7 +65,7 @@ export const userProfile = (dispatch) => {
   .then(response => response.json())
   .then(data => {
     const { budgets, categories, expenses } = data.user
-    let user = {id: data.user.id, first_name: data.user.first_name, last_name: data.user.last_name, email: data.user.email}
+    let user = {id: data.user.id, first_name: data.user.first_name, last_name: data.user.last_name, email: data.user.email, image: data.user.image}
     dispatch({ type: GET_PROFILE, payload: user })
     dispatch({ type: GET_BUDGETS, payload: budgets})
     dispatch({ type: GET_CATEGORIES, payload: categories})
@@ -88,7 +89,8 @@ export const editUser = (user, dispatch) => {
       first_name: data.user.first_name,
       last_name: data.user.last_name,
       email: data.user.email,
-      password: data.user.password
+      password: data.user.password,
+      image: data.user.image
     }
     dispatch({ type: EDIT_PROFILE, payload: user })
   })

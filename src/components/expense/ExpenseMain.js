@@ -150,7 +150,7 @@ class ExpenseMain extends Component {
                 <tr key={expense.id} id="expense_table_row">
                   <td className="expense_table_data">{expense.description}</td>
                   <td className="expense_table_data">{expense.date}</td>
-                  <td className="expense_table_data">${parsedExpenseAmount}</td>
+                  <td className="expense_table_data">${expense.amount.toFixed(2)}</td>
                   <td className="expense_table_data">
                     <button className="expense_button" id={expense.id} onClick={() => this.props.handleClickEditExpense(expense)}> Edit </button>
                     <button className="expense_button" id={expense.id} onClick={() => this.handleClickDeleteExpense(expense)}> Delete </button>

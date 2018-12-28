@@ -20,7 +20,7 @@ class Login extends Component {
       this.props.login(this.state)
       event.target.reset()
     } else {
-      alert('Please use a valid email and password.')
+      alert('Please fill out all information.')
     }
   }
 
@@ -36,30 +36,26 @@ class Login extends Component {
     return (
       <React.Fragment>
         <div id="login_form_container">
-
-          <div>
+          <div id="login_close_container">
             <button onClick={this.handleCloseButton} id="login_close"> X </button>
           </div>
-
           <form id="login_form" onSubmit={this.handleSubmitLogin}>
 
-
             <div className="login_form_div" >
-              <label className="login_label" > Email: </label>
-              <input className="login_input" type="text" name="email" onChange={this.handleChange}></input>
+              <input className="login_input" placeholder="Enter email address..." type="text" name="email" onChange={this.handleChange}></input>
             </div>
 
             <div className="login_form_div" >
-              <label className="login_label" > Password: </label>
-              <input className="login_input" type={this.state.showpassword ? "text" : "password"} name="password" onChange={this.handleChange}></input>
+              <input className="login_input" placeholder="Enter password..."type={this.state.showpassword ? "text" : "password"} name="password" onChange={this.handleChange}></input>
+              <div id="login_form_checkbox_div">
+                <input id="login_checkbox" type="checkbox" onClick={this.onClickPassword}></input>
+                <div id="login_show_password_div">show password</div>
+              </div>
             </div>
 
-            <div id="login_form_checkbox_div">
-              <input type="checkbox" onClick={this.onClickPassword}></input>
-              <label className="show_password_label"> show password </label>
+            <div id="login_button_container">
+              <button id="login_button">Login</button>
             </div>
-
-            <button id="login_button"> Login </button>
 
           </form>
         </div>

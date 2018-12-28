@@ -8,7 +8,7 @@
   width: 40vh;
   height: 30vh;
   position: fixed;
-  /* display: none; */
+  display: none;
 }
 
 #signup_close_container{

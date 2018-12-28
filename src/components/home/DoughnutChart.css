@@ -1,5 +1,3 @@
 #graph_container2 {
-  display: block;
-  overflow: scroll;
-  height: 800px;
+  border: 1px blue solid;
 }
