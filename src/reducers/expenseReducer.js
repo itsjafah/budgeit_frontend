@@ -6,7 +6,6 @@ const initialState = {
 
 const expenseReducer = (state = initialState, action) => {
   let expenses
-  let expense
   switch (action.type) {
 
     case GET_EXPENSES:
@@ -31,6 +30,8 @@ const expenseReducer = (state = initialState, action) => {
     expenses = [...state.expenses].filter(expense => {
       if (expense.id !== action.payload.id ) {
         return expense
+      } else {
+        return null
       }
     })
     return { ...state, expenses }

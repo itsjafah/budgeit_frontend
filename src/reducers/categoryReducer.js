@@ -31,6 +31,8 @@ const categoryReducer = (state = initialState, action) => {
       categories = [...state.categories].filter(category => {
         if (category.id !== action.payload.id ) {
           return category
+        } else {
+          return null
         }
       })
       return { ...state, categories }

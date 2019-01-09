@@ -1,7 +1,5 @@
 import {
-  GET_CATEGORIES,
   ADD_CATEGORY,
-  EDIT_CATEGORY,
   DELETE_CATEGORY,
 } from '../constants/action-type'
 

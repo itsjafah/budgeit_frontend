@@ -30,6 +30,8 @@ const budgetReducer = (state = initialState, action) => {
       budgets = [...state.budgets].filter(budget => {
         if (budget.id !== action.payload.id ) {
           return budget
+        } else {
+          return null
         }
       })
       return { ...state, budgets }

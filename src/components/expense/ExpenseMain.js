@@ -9,7 +9,8 @@ class ExpenseMain extends Component {
     expenses: [],
     sortDescription: false,
     sortDates: false,
-    sortAmounts: false
+    sortAmounts: false,
+    selectedBudget: null
   }
 
   handleClickDeleteExpense = (expense) => {
@@ -114,18 +115,22 @@ class ExpenseMain extends Component {
     })
   }
 
+  handleClickBudget = (budget) => {
+    this.setState({selectedBudget: budget})
+  }
+
   budgetList = () => {
     return this.props.budgets.map(budget => {
       return (
-        <div id="expense_list">
-            Budget: {budget.description}
+        <div id="budget_list" key={budget.id}>
+            <div id="budget" onClick={()=>this.handleClickBudget(budget)}>Budget: {budget.description}</div>
         </div>
       )
     })
   }
 
-  mapBudgets = () => {
-    return this.props.budgets.map(budget => {
+  mapBudgets = (budgets) => {
+    return budgets.map(budget => {
       let categoryBudgets = this.props.categories.filter(category => budget.id === category.budget_id)
       return (
         <div id="table_data">
@@ -180,7 +185,12 @@ class ExpenseMain extends Component {
           </div>
           <table id="expense_table">
             <tbody id="table_body">
-              {this.mapBudgets()}
+              {this.state.selectedBudget
+                ? this.mapBudgets(this.props.budgets.filter(b => {
+                    return b.id === this.state.selectedBudget.id
+                  }))
+                : this.mapBudgets(this.props.budgets)
+              }
             </tbody>
           </table>
         </div>

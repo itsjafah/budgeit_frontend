@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-  withRouter,
+  // BrowserRouter as Router,
+  // Route,
+  // Link,
+  // Redirect,
+  // withRouter,
   NavLink
 } from 'react-router-dom'
 import { connect } from 'react-redux'

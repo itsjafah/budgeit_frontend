@@ -26,16 +26,21 @@
   font-size: 2.5vh;
 }
 
-#expense_list{
-  /* border: 1px black solid; */
-  text-align: left;
+#budget_list{
+  border: 1px black solid;
   margin: 1vh;
+}
+
+#budget{
+  border: 1px black solid;
+  text-align: left;
   white-space: nowrap;
   overflow-x: hidden;
   height: 5%;
+  padding: 1vh;
 }
 
-#expense_list:hover{
+#budget:hover{
   font-weight: bold;
 }
 

@@ -45,7 +45,7 @@ class ExpenseAdd extends Component {
         <form id="expense_add_form" onSubmit={this.handleSubmitExpense}>
 
           <select className="expense_add_input" name="category_id" onChange={this.handleChange} value={this.state.category_id}>
-            <option value="" disabled selected hidden>Category</option>
+            <option value="" disabled value hidden>Category</option>
             {this.props.categories.map((category) => <option key={category.id} value={category.id}>{category.title}</option>)}
           </select>
 
