@@ -13,7 +13,6 @@ class ExpenseEdit extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.selectedExpense !== prevProps.selectedExpense && this.props.selectedExpense) {
-      debugger
        this.setState({
          category_id: this.props.selectedExpense.category_id,
          description: this.props.selectedExpense.description,

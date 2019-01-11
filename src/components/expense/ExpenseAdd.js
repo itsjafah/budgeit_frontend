@@ -40,7 +40,7 @@ class ExpenseAdd extends Component {
   render() {
     return (
       <div id="expenses_add_container">
-        <div id="expense_add_header"> Add Expense </div>
+        <div id="expense_add_header">Add Expense</div>
 
         <form id="expense_add_form" onSubmit={this.handleSubmitExpense}>
 
@@ -53,7 +53,7 @@ class ExpenseAdd extends Component {
           <input className="expense_add_input" type="date" name="date" onChange={this.handleChange} value={this.state.date}></input>
           <input className="expense_add_input" type="number" step="0.01" min="0" name="amount" placeholder="Enter an amount..." onChange={this.handleChange} value={this.state.amount}></input>
 
-          <button id="expense_add_button"> Save </button>
+          <button id="expense_add_button">Save</button>
 
         </form>
 

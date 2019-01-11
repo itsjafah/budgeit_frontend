@@ -1,4 +1,42 @@
 #expenses_add_container{
-  border: 1px red solid;
+  /* border: 1px red solid; */
   margin-top: 2vh;
+}
+
+#expense_add_header{
+  /* border: 1px black solid; */
+  height: 20%;
+  text-align: center;
+  font-size: 4vh;
+  color: #3dd4e5;
+}
+
+#expense_add_form{
+  /* border: 1px black solid; */
+  display: flex;
+  width: 95%;
+  margin: auto;
+  margin-top: 2vh;
+}
+
+.expense_add_input{
+  /* border: 1px red solid; */
+  font-size: 2vh;
+  width: 22%;
+  margin-left: 1vh;
+}
+
+#expense_add_button{
+  border: 1px white solid;
+  font-size: 2vh;
+  background-color: #ffac47;
+  color: white;
+  border-radius: 3px;
+  height: 4vh;
+  width: 7vw;
+  margin-left: 1vh;
+}
+
+#expense_add_button:hover{
+  box-shadow: 3px 3px 6px black;
 }

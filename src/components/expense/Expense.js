@@ -4,9 +4,6 @@ import ExpenseEdit from './ExpenseEdit'
 import { connect } from 'react-redux'
 
 class Expense extends Component {
-  state = {
-    selectedExpense: ''
-  }
 
   handleClickEditExpense = (expense) => {
     this.setState({selectedExpense: expense})
@@ -18,8 +15,7 @@ class Expense extends Component {
         {!!this.props.user.first_name
         ?
           <React.Fragment>
-            {this.state.selectedExpense ? <ExpenseEdit selectedExpense={this.state.selectedExpense}/> : null }
-            <ExpenseMain handleClickEditExpense={this.handleClickEditExpense}/>
+            <ExpenseMain />
           </React.Fragment>
         :
           null
