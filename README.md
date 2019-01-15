@@ -3,6 +3,7 @@
 Budget application built in JavaScript - React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
 
 ## Contents
+
 - [Libraries](#libraries)
 - [Installation](#installation)
 - [Deployment](#deployment)
@@ -13,6 +14,7 @@ Budget application built in JavaScript - React/Redux. User is able to set a budg
 Built using create-react-app. Redux is used for file structure and state management. Utilized React Router to handle naviation and components. Used open source Chart.js for simple display of user's budget.
 
 ## Installation
+
 Fork and clone this repository and CD into folder. Run `npm install` and once complete, run `npm start`. Ensure to run installation for backend for full running application: https://github.com/sinyoungnam/budgeit_backend
 
 ## Deployment
