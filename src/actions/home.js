@@ -59,7 +59,9 @@ export const userProfile = (dispatch) => {
   fetch(`https://budgeit-backend.herokuapp.com/profile`, {
     method: 'GET',
     headers: {
-      Authorization: `Bearer ${localStorage.getItem('jwt')}`
+      Authorization: `Bearer ${localStorage.getItem('jwt')}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
     }
   })
   .then(response => response.json())
