@@ -21,7 +21,7 @@ Fork and clone this repository and CD into folder. Run `npm install` and once co
 
 Deployed to Heroku: https://budgeit-frontend.herokuapp.com/
 
-## Future Development
+## Development
 
 Ideas for future features:
 
