@@ -181,13 +181,13 @@ class ExpenseMain extends Component {
           {categoryBudgets.map(category => {
             let categoryExpenses = this.props.expenses.filter(expense => expense.category_id === category.id)
             return (
-              <div>
+              <div key={category.id}>
                 <tr id="category_table_row">
                   <th className="category_table_headers" style={{backgroundColor: `${category.color}`}}> {category.title}</th>
                 </tr>
                 {categoryExpenses.map(expense => {
                   return (
-                    <div>
+                    <div key={expense.id}>
                     <tr key={expense.id} id="expense_table_row" onDoubleClick={()=>this.handleDoubleClick(expense)}>
                       {this.state.doubleClicked && this.state.selectedDoubleClicked.id === expense.id ? <input className="expense_table_data" defaultValue={this.state.selectedDoubleClicked.description} type="text" name="description" onChange={this.handleChange}></input> : <td className="expense_table_data">{expense.description}</td>}
                       {this.state.doubleClicked && this.state.selectedDoubleClicked.id === expense.id ? <input className="expense_table_data" defaultValue={this.state.selectedDoubleClicked.date} type="date" name="date" onChange={this.handleChange}></input> : <td className="expense_table_data">{expense.date}</td>}

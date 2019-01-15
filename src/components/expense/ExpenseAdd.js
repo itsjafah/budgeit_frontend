@@ -38,6 +38,7 @@ class ExpenseAdd extends Component {
   }
 
   render() {
+    console.log(this.state.category_id);
     return (
       <div id="expenses_add_container">
         <div id="expense_add_header">Add Expense</div>
@@ -45,7 +46,7 @@ class ExpenseAdd extends Component {
         <form id="expense_add_form" onSubmit={this.handleSubmitExpense}>
 
           <select className="expense_add_input" name="category_id" onChange={this.handleChange} value={this.state.category_id}>
-            <option value="" disabled value hidden>Category</option>
+            <option value="" defaultValue disabled hidden>Category</option>
             {this.props.categories.map((category) => <option key={category.id} value={category.id}>{category.title}</option>)}
           </select>
 

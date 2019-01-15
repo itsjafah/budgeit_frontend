@@ -4,7 +4,7 @@ import {
 } from '../constants/action-type'
 
 export const addCategory = (category, dispatch) => {
-  fetch('https://budgeit-backend.herokuapp.com/categories', {
+  fetch('http://localhost:3000/categories', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -20,7 +20,7 @@ export const addCategory = (category, dispatch) => {
 }
 
 export const deleteCategory = (category, dispatch) => {
-  fetch(`https://budgeit-backend.herokuapp.com/categories/${category.id}`, {
+  fetch(`http://localhost:3000/categories/${category.id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`

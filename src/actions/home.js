@@ -10,7 +10,7 @@ import {
 } from '../constants/action-type'
 
 export const addUser = (user, dispatch) => {
-  fetch('https://budgeit-backend.herokuapp.com/signup', {
+  fetch('http://localhost:3000/signup', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -30,7 +30,7 @@ export const addUser = (user, dispatch) => {
 }
 
 export const login = (user, dispatch) => {
-  fetch('https://budgeit-backend.herokuapp.com/login', {
+  fetch('http://localhost:3000/login', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -56,7 +56,7 @@ export const login = (user, dispatch) => {
 }
 
 export const userProfile = (dispatch) => {
-  fetch(`https://budgeit-backend.herokuapp.com/profile`, {
+  fetch(`http://localhost:3000/profile`, {
     method: 'GET',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -76,7 +76,7 @@ export const userProfile = (dispatch) => {
 }
 
 export const editUser = (user, dispatch) => {
-  fetch(`https://budgeit-backend.herokuapp.com/users/${user.id}/edit`, {
+  fetch(`http://localhost:3000/users/${user.id}/edit`, {
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -99,7 +99,7 @@ export const editUser = (user, dispatch) => {
 }
 
 export const logout = (user, dispatch) => {
-  fetch('https://budgeit-backend.herokuapp.com/logout', {
+  fetch('http://localhost:3000/logout', {
     method: 'DELETE'
   })
   .then(response => response.json())
