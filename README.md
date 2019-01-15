@@ -2,12 +2,6 @@
 
 Budget application built in JavaScript - React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
 
-<video width="320" height="240" controls>
-  <source src="./demo.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-  Your browser does not support the video tag.
-</video>
-
 ## Contents
 
 - [Libraries](#libraries)
