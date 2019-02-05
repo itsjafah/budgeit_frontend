@@ -1,0 +1,20 @@
+export const ADD_USER = 'ADD_USER'
+export const LOGIN = 'LOGIN'
+export const GET_PROFILE = 'GET_PROFILE'
+export const EDIT_PROFILE = 'EDIT_PROFILE'
+export const LOGOUT = 'LOGOUT'
+
+export const GET_EXPENSES = 'GET_EXPENSES'
+export const ADD_EXPENSE = 'ADD_EXPENSE'
+export const EDIT_EXPENSE = 'EDIT_EXPENSE'
+export const DELETE_EXPENSE = 'DELETE_EXPENSE'
+
+export const GET_CATEGORIES = 'GET_CATEGORIES'
+export const ADD_CATEGORY = 'ADD_CATEGORY'
+export const EDIT_CATEGORY = 'EDIT_CATEGORY'
+export const DELETE_CATEGORY = 'DELETE_CATEGORY'
+
+export const GET_BUDGETS = 'GET_BUDGETS'
+export const ADD_BUDGET = 'ADD_BUDGET'
+export const EDIT_BUDGET = 'EDIT_BUDGET'
+export const DELETE_BUDGET = 'DELETE_BUDGET'

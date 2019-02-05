@@ -1,0 +1,19 @@
+#graph_container2 {
+  /* border: 1px blue solid; */
+}
+
+.graph{
+  /* border: 1px pink solid; */
+  /* border-top: 1px black solid; */
+  border-bottom: 1px black solid;
+  padding: 1vh;
+}
+
+.graph_label{
+  /* border: 1px black solid; */
+  color: #3dd4e5;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3vh;
+  text-decoration: underline;
+}

@@ -1,0 +1,104 @@
+#profile_container{
+  /* border: 1px black solid; */
+  display: flex;
+  height: 80vh;
+}
+
+#user_container{
+  /* border: 1px black solid; */
+  width: 50%;
+  border-right: 2px black solid;
+}
+
+#profile_label{
+  /* border: 1px black solid; */
+  font-size: 5vh;
+  text-align: center;
+  margin-bottom: 2vh;
+  color: #ffac47;
+}
+
+#profile_picture_container{
+  /* border: 1px black solid; */
+  width: 40%;
+  height: 40%;
+  margin: auto;
+}
+
+#profile_picture{
+  border: 1px darkgrey solid;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+#profile_information_container{
+  /* border: 1px black solid; */
+  width: 75%;
+  height: 40%;
+  margin: auto;
+  padding: 1vh;
+  margin-top: 1vh;
+}
+
+#profile_information{
+  /* border: 1px black solid; */
+}
+
+.profile_info{
+  /* border: 1px black solid; */
+  height: 20%;
+  font-size: 3vh;
+  line-height: 6vh;
+}
+
+#profile_edit_button_container{
+  /* border: 1px black solid; */
+  height: 20%;
+}
+
+#profile_edit_button{
+  border-radius: 3px;
+  height: 4vh;
+  width: 8vw;
+  font-size: 2vh;
+  border: 1px white solid;
+  background-color: #ffac47;
+  color: white;
+  border-radius: 3px;
+  margin-top: 1vh;
+}
+
+#profile_edit_button:hover{
+  box-shadow: 3px 3px 6px black;
+}
+
+#profile_graph_container{
+  /* border: 1px black solid; */
+  width: 50%;
+  height: 100%;
+}
+
+#profile_graph{
+  /* border: 1px black solid; */
+  height: 100%;
+}
+
+#profile_graph_chart_container{
+  /* border: 1px black solid; */
+}
+
+#profile_chart_title{
+  /* border: 1px black solid; */
+  font-size: 5vh;
+  height: 100%;
+  text-align: center;
+  margin-bottom: 1vh;
+  color: #ffac47;
+}
+
+#graph_container{
+  /* border: 1px black solid; */
+  height: 90%;
+  overflow-y: scroll;
+}

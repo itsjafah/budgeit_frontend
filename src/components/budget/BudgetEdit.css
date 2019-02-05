@@ -1,0 +1,88 @@
+#budget_edit_container{
+  /* border: 1px black solid; */
+  position: relative;
+  height: 15vh;
+  width: 100%;;
+  margin-top: -15vh;
+  display: none;
+}
+
+#budget_edit_close{
+  /* border: 1px black solid; */
+  position: absolute;
+  right: 0;
+  font-size: 2vh;
+  border: none;
+  cursor: pointer;
+  margin-right: 2vh;
+  margin-top: 1vh;
+}
+
+#budget_edit_form{
+  /* border: 1px black solid; */
+  height: 100%;
+}
+
+#budget_edit_body_container{
+  /* border: 1px black solid; */
+  height: 100%;
+}
+
+.budget_edit_body{
+  /* border: 1px black solid; */
+  height: 50%;
+  display: flex;
+}
+
+.budget_edit_label{
+  /* border: 1px black solid; */
+  font-size: 2vh;
+  height: 3vh;
+  margin-top: 2vh;
+  margin-left: 1vh;
+}
+
+.budget_edit_input{
+  border: 1px darkgrey solid;
+  border-radius: 3px;
+  font-size: 1.75vh;
+  height: 2vh;
+  margin-top: 1.5vh;
+  padding: 1vh;
+  margin-left: 1vh;
+  width: 20vw;
+}
+
+.budget_edit_input_date{
+  /* border: 1px black solid; */
+  font-size: 1.75vh;
+  height: 2vh;
+  margin-top: 1.5vh;
+  padding: 1vh;
+  margin-left: 1vh;
+}
+
+#budget_edit_button_container{
+  /* border: 1px black solid; */
+  margin-top: -5.5vh;
+  margin-right: 10vh;
+  position: relative;
+  width: 8%;
+  float: right;
+
+}
+
+#budget_edit_save_button{
+  border: 1px white solid;
+  font-size: 2vh;
+  background-color: #ffac47;
+  color: white;
+  border-radius: 3px;
+  height: 4vh;
+  width: 7vw;
+
+}
+
+#budget_edit_save_button:hover{
+  box-shadow: 3px 3px 6px black;
+}

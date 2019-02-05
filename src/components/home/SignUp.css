@@ -1,0 +1,92 @@
+#sign_up_form_container{
+  border: 2px #ffac47 solid;
+  box-shadow: 5px 5px 10px black;
+  border-radius: 5px;
+  margin-top: -95vh;
+  margin-left: 70vh;
+  background-color: white;
+  width: 40vh;
+  height: 30vh;
+  position: fixed;
+  display: none;
+}
+
+#signup_close_container{
+  /* border: 1px black solid; */
+  float: right;
+  padding: 1vh;
+  position: relative;
+}
+
+#signup_close{
+  /* border: 1px black solid; */
+  font-size: 2vh;
+  border: none;
+  cursor: pointer;
+}
+
+#signup_close:hover{
+  font-weight: bold;
+}
+
+#sign_up_form{
+  /* border: 1px black solid; */
+  position: absolute;
+  height: 95%;
+  width: 90%;
+  margin-top: 1vh;
+}
+
+.sign_up_form_div{
+  /* border: 1px black solid; */
+  padding-top: 1vh;
+  padding-left: 1vh;
+}
+
+.sign_up_input{
+  /* border: 1px black solid; */
+  border-radius: 3px;
+  font-size: 2vh;
+  margin: .5vh;
+  width: 30vh;
+  padding: .35vh;
+}
+
+#sign_up_form_checkbox_div{
+  /* border: 1px black solid; */
+  display: flex;
+  width: 10vh;
+  float: right;
+  margin-right: 3vh;
+}
+
+#signup_checkbox{
+  /* border: 1px black solid; */
+}
+
+#signup_show_password_div{
+  /* border: 1px black solid; */
+  font-size: 1vh;
+}
+
+#sign_up_button_container{
+  /* border: 1px black solid; */
+  margin-top: 2.5vh;
+  margin-left: 7vh;
+  width: 50%;
+  height: 3vh;
+}
+
+#sign_up_button{
+  border: 1px white solid;
+  background-color: #ffac47;
+  color: white;
+  border-radius: 3px;
+  font-size: 1.5vh;
+  width: 100%;
+  height: 100%;
+}
+
+#sign_up_button:hover{
+  box-shadow: 3px 3px 6px black;
+}

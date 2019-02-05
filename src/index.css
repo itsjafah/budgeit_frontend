@@ -1,0 +1,11 @@
+body {
+  background-repeat: no-repeat;
+  height: 100vh;
+  /* font-family: 'Nanum Gothic', sans-serif; */
+  font-family: 'Quicksand', sans-serif;
+  /* background-color: lightgrey */
+}
+
+html {
+  /* overflow: hidden; */
+}
