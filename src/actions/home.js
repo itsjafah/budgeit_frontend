@@ -20,7 +20,6 @@ export const addUser = (user, dispatch) => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
       localStorage.setItem('jwt', data.jwt)
       const { budgets, categories, expenses } = data.user
       dispatch({ type: ADD_USER, payload: user })

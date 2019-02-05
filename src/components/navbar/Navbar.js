@@ -102,7 +102,11 @@ class Navbar extends Component {
       return(
         <React.Fragment>
           <div id='logged_out_navbar'>
+<<<<<<< HEAD
             <div id='logged_out_navoption'><NavLink to='/' id='logged_out_navlink' onClick={this.handleClickLogo}>BudgeIt</NavLink></div>
+=======
+            <div id='logged_out_navoption'><NavLink to='/home' id='logged_out_navlink' onClick={this.handleClickLogo}>BudgeIt</NavLink></div>
+>>>>>>> 26ebef5eee87100df009d16ab7fe3d148ca108a4
           </div>
         </React.Fragment>
       )
