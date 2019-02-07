@@ -11,7 +11,7 @@ Budget application built in JavaScript - React/Redux. User is able to set a budg
 
 ## Libraries
 
-Built using create-react-app. Redux is used for file structure and state management. Utilized React Router to handle naviation and components. Used open source Chart.js for simple display of user's budget.
+Built using create-react-app. Redux is used for file structure and state management. Utilized React Router to handle navigation and components. Used open source Chart.js for simple display of user's budget.
 
 ## Installation
 
