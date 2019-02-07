@@ -2,8 +2,6 @@
 
 Budget application built in JavaScript - React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
 
-![Demo](https://user-images.githubusercontent.com/38287441/51202925-d9073000-18cd-11e9-8e9f-86ce2a8fd0d8.gif)
-
 ## Contents
 
 - [Libraries](#libraries)
@@ -17,11 +15,15 @@ Built using create-react-app. Redux is used for file structure and state managem
 
 ## Installation
 
-Fork and clone this repository and CD into folder. Run `npm install` and once complete, run `npm start`. Ensure to run installation for backend for full running application: https://github.com/sinyoungnam/budgeit_backend
+Fork and clone this repository and CD into folder. Run `npm install` and once complete, run `npm start`. Ensure to run installation for backend for full running application: [Back-End](https://github.com/sinyoungnam/budgeit_backend)
 
 ## Deployment
 
-Deployed to Heroku: https://budgeit-frontend.herokuapp.com/
+Deployed to Heroku: [Heroku](https://budgeit-frontend.herokuapp.com/)
+
+## Demo
+
+[Demo](https://www.youtube.com/watch?v=eERwXQJMPkQ&feature=youtu.be)
 
 ## Development
 
@@ -29,7 +31,7 @@ Ideas for future features:
 
 ### Link to bank account
 
-Allowing a user to have an option to link to their bank account to keep track of their budget, payments, and bills. 
+Allowing a user to have an option to link to their bank account to keep track of their budget, payments, and bills.
 
 ### Calendar
 

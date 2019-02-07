@@ -61,16 +61,6 @@
   animation-name: slidein;
 }
 
-@keyframes slidein {
-  from {
-    margin-top: 0%;
-    height: 0%;
-  }
-  to {
-    height: 60vh;
-  }
-}
-
 .navoption_container{
   /* border: 1px black solid; */
   height: 15%;
