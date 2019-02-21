@@ -1,6 +1,6 @@
 # BudgeIt Frontend
 
-Budget application built in JavaScript - React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
+Budget application built in JavaScript with React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
 
 ## Contents
 
