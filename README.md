@@ -6,7 +6,6 @@ Budget application built in JavaScript with React/Redux. User is able to set a b
 
 - [Libraries](#libraries)
 - [Installation](#installation)
-- [Deployment](#deployment)
 - [Development](#development)
 
 ## Libraries
@@ -16,10 +15,6 @@ Built using create-react-app. Redux is used for file structure and state managem
 ## Installation
 
 Fork and clone this repository and CD into folder. Run `npm install` and once complete, run `npm start`. Ensure to run installation for backend for full running application: [Back-End](https://github.com/sinyoungnam/budgeit_backend)
-
-## Deployment
-
-Deployed to Heroku: [Heroku](https://budgeit-frontend.herokuapp.com/)
 
 ## Demo
 
