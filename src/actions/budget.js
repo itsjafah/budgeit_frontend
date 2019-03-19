@@ -5,7 +5,7 @@ import {
 } from '../constants/action-type'
 
 export const addBudget = (budget, dispatch) => {
-  fetch('https://budgeit-backend.herokuapp.com/budgets', {
+  fetch('http://localhost:3000/budgets', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -21,7 +21,7 @@ export const addBudget = (budget, dispatch) => {
 }
 
 export const editBudget = (budget, dispatch) => {
-  return fetch(`https://budgeit-backend.herokuapp.com/budgets/${budget.id}`, {
+  return fetch(`http://localhost:3000/budgets/${budget.id}`, {
     method: 'PATCH',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`,
@@ -37,7 +37,7 @@ export const editBudget = (budget, dispatch) => {
 }
 
 export const deleteBudget = (budget, dispatch) => {
-  fetch(`https://budgeit-backend.herokuapp.com/budgets/${budget.id}`, {
+  fetch(`http://localhost:3000/budgets/${budget.id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Bearer ${localStorage.getItem('jwt')}`
