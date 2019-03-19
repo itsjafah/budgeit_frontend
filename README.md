@@ -1,24 +1,31 @@
 # BudgeIt Frontend
 
-Budget application built in JavaScript with React/Redux. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
+This application allow users to track their expenses with customized budgets and categories. User is able to set a budget with a date range and an amount, create a category, and keep track of expenses.
+
+<img src="./image.png" alt=""/>
 
 ## Contents
 
-- [Libraries](#libraries)
-- [Installation](#installation)
+- [Getting Started](#getting_started)
+- [Built With](#built_with)
+- [Versioning](#versioning)
 - [Development](#development)
+- [Demo](#demo)
 
-## Libraries
+## Getting Started
 
-Built using create-react-app. Redux is used for file structure and state management. Utilized React Router to handle navigation and components. Used open source Chart.js for simple display of user's budget.
+Fork and clone this repository. `cd` into directory. Run `npm install` to install dependencies. Run `npm start` for development server will be launched.
 
-## Installation
+Ensure to run installation for backend for full application: [Back-End](https://github.com/sinyoungnam/budgeit_backend)
 
-Fork and clone this repository and CD into folder. Run `npm install` and once complete, run `npm start`. Ensure to run installation for backend for full running application: [Back-End](https://github.com/sinyoungnam/budgeit_backend)
+## Built With
 
-## Demo
+Visual display of a user's expenses and budgets with Chart.js. Worked with React for frontend development. Used Redux for state management, created reducers with pure functions and actions to dispatch events and store to maintain the state. Worked with React-Router for routing. Used JSX, HTML, and custom CSS to create responsive layouts, navigation and tables. Implemented JWT token based authentication for the REST API to authorize and authenticate a user.
 
-[Demo](https://www.youtube.com/watch?v=eERwXQJMPkQ&feature=youtu.be)
+## Versioning
+
+* react version ^16.6.3
+* npm version 6.5.0
 
 ## Development
 
@@ -31,3 +38,7 @@ Allowing a user to have an option to link to their bank account to keep track of
 ### Calendar
 
 Incorporating a calendar for simple visual and easy navigation. Keep track throughout the week/month/year.
+
+## Demo
+
+[Demo](https://www.youtube.com/watch?v=eERwXQJMPkQ)
